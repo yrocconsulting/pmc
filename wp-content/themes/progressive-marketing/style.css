@@ -4,7 +4,7 @@ Theme URI: https://progressivemarketing.pro
 Author: Progressive Marketing Concepts
 Author URI: https://progressivemarketing.pro
 Description: Custom theme for Progressive Marketing Concepts and PMC Driveby: Google Maps ranking for medical clinics, auto dealerships, hotels, and veterinary clinics. Activating the theme creates the site pages and menus.
-Version: 1.0.0
+Version: 1.1.0
 Requires at least: 6.3
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -390,6 +390,61 @@ p { margin: 0 0 1em; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 56px; padding-top: 24px; padding-bottom: 24px; border-top: 1px solid rgba(255,255,255,.1); font-size: .85rem; }
 .footer-bottom p { margin: 0; }
 .footer-legal { display: flex; gap: 20px; }
+
+/* ---------- HighLevel embeds ---------- */
+.ghl-embed { margin-top: 16px; }
+.ghl-embed iframe { display: block; width: 100%; min-height: 400px; }
+.btn-block { width: 100%; }
+
+/* ---------- Growth360 ---------- */
+.section-flush-top { padding-top: 0; }
+.section-soft .result { background: #fff; }
+.split-center { align-items: center; }
+.brief-card { background: #fff; color: var(--text); border-radius: 20px; padding: 28px; box-shadow: var(--shadow-lg); max-width: 440px; margin-left: auto; border-top: 6px solid var(--sky); }
+.brief-top { display: flex; justify-content: space-between; gap: 12px; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.brief-title { font-size: 1.9rem; font-weight: 800; color: var(--ink); letter-spacing: -.02em; margin: 18px 0 16px; }
+.brief-list { list-style: none; margin: 0 0 18px; padding: 0; border-top: 1px solid var(--line); }
+.brief-list li { display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); font-weight: 700; color: var(--ink); }
+.brief-list span { color: var(--blue); font-weight: 800; font-size: .85rem; }
+.brief-caption { font-size: .9rem; color: var(--muted); margin: 0; }
+.video-wrap { margin: 0; }
+.video-wrap video { width: 100%; border-radius: 16px; background: var(--navy); box-shadow: var(--shadow-lg); aspect-ratio: 16 / 9; }
+.video-wrap figcaption { text-align: center; font-size: .9rem; color: var(--muted); margin-top: 12px; }
+.callout-q { font-size: 1.2rem; font-weight: 700; color: var(--ink); border-left: 4px solid var(--blue); padding-left: 18px; }
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+.pillar { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 24px; }
+.pillar-tag { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+.pillar p { color: var(--muted); margin: 0; }
+.flow { margin: 32px 0 0; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; color: var(--ink); }
+.flow span { font-weight: 800; color: var(--blue); }
+.note-box { margin: 28px 0 0; background: #e6f4fb; border-radius: var(--radius); padding: 20px 24px; color: var(--ink); }
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.checklist li { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; color: var(--muted); }
+.checklist li .icon { color: var(--green); width: 22px; height: 22px; margin-top: 2px; }
+.checklist strong { color: var(--ink); }
+.checklist-compact { margin: 20px 0 24px; gap: 8px; }
+.checklist-compact li { border: 0; padding: 0; background: none; color: var(--text); }
+.compare { display: grid; grid-template-columns: 1fr 1.3fr; gap: 20px; margin-top: 36px; }
+.compare-col { border-radius: var(--radius); padding: 28px; }
+.compare-col ul, .compare-col ol { margin: 0; padding-left: 1.2em; display: grid; gap: 12px; }
+.compare-old { background: var(--soft); color: var(--muted); }
+.compare-old h3 { color: var(--muted); }
+.compare-old li::marker { content: "— "; }
+.compare-new { background: var(--navy); color: #c9d6e6; }
+.compare-new h3 { color: #fff; }
+.compare-new strong { color: #fff; }
+.compare-new li::marker { color: var(--sky); font-weight: 800; }
+.promise-list { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.promise-list li { border-top: 3px solid var(--sky); padding-top: 18px; color: #a9bdd4; }
+.promise-list strong { display: block; color: #fff; font-size: 1.1rem; margin-bottom: 4px; }
+@media (max-width: 960px) {
+	.pillars, .compare { grid-template-columns: 1fr; }
+	.promise-list { grid-template-columns: 1fr 1fr; }
+	.brief-card { margin-left: 0; }
+}
+@media (max-width: 600px) {
+	.promise-list { grid-template-columns: 1fr; }
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {

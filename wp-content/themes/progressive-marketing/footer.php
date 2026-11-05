@@ -31,7 +31,7 @@ defined( 'ABSPATH' ) || exit;
 				<li><a href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">Case Studies</a></li>
 				<li><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">About Us</a></li>
 				<li><a href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>">Contact Us</a></li>
-				<li><a href="https://vet.progressivemarketing.pro">Growth360™ for Vets</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/growth360/' ) ); ?>">Growth360™ for Vets</a></li>
 			</ul>
 		</div>
 		<div>

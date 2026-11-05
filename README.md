@@ -19,7 +19,8 @@ Activating the theme creates these pages (it never overwrites existing ones), se
 | `/industries/medical-clinics/`, `/auto-dealerships/`, `/hotels/`, `/veterinary-clinics/` | `template-parts/industry.php` (via `page.php`) |
 | `/case-studies/` | `page-case-studies.php` |
 | `/about-us/` | `page-about-us.php` |
-| `/contact-us/` | `page-contact-us.php` (free trial signup form) |
+| `/contact-us/` | `page-contact-us.php` (HighLevel form) |
+| `/growth360/` | `page-growth360.php` (moved from vet.progressivemarketing.pro) |
 
 `/case-studies/`, `/about-us/`, and `/contact-us/` keep the same URLs as the old site. `/home-page/` redirects to `/`.
 
@@ -29,17 +30,39 @@ Activating the theme creates these pages (it never overwrites existing ones), se
 - **Phone, email, trial button URL, top bar text, where signups go:** WordPress admin → Appearance → Customize → Progressive Marketing.
 - **Logo:** Appearance → Customize → Site Identity (falls back to `assets/img/logo.png`).
 
-## Trial signups
+## HighLevel: forms and payments
 
-The form on `/contact-us/#trial`:
+WordPress runs the website. HighLevel handles forms, the trial checkout and the CRM. Set these in **Appearance → Customize → Progressive Marketing**:
 
-1. Saves every submission under **Dashboard → Trial Signups**, so nothing is lost if email fails.
-2. Emails the notification address (Customizer).
-3. If a **webhook URL** is set in the Customizer, POSTs the signup as JSON. Use this to send signups into HighLevel, Jumper Media onboarding, or Zapier.
+| Setting | What it does | Default |
+| --- | --- | --- |
+| Free trial button URL | Every "Start free trial" button (header, top bar, CTAs) | `https://vet.progressivemarketing.pro/trial-form` (the existing HighLevel order form) |
+| HighLevel form ID or link | Form shown on `/contact-us/` | blank |
+| Growth360 evaluation URL | "Start my Executive Evaluation" buttons on `/growth360/` | the same HighLevel order form |
+| Growth360 video URL | Overview video on `/growth360/` | the existing HighLevel-hosted MP4 |
 
-To send the "Start free trial" buttons to an external order form instead (for example the HighLevel trial funnel), set **Free trial button URL** in the Customizer.
+For the form ID: in HighLevel go to **Sites → Forms → Builder**, open the form, click **Integrate**, and copy either the form ID or the link that contains `/widget/form/…`. Either works.
 
-Install an SMTP plugin (for example WP Mail SMTP) so WordPress email from cPanel lands in inboxes.
+You can also drop HighLevel forms or booking calendars into any WordPress page or post with shortcodes:
+
+```
+[ghl_form id="FORM_ID"]
+[ghl_calendar id="CALENDAR_ID"]
+```
+
+### Backup form
+
+If the trial URL and the HighLevel form are both blank, the Contact page falls back to a built-in form. It saves signups under **Dashboard → Trial Signups**, emails them, and can POST them to a HighLevel inbound webhook. You normally won't need it.
+
+### Domains
+
+HighLevel's order form needs a domain connected to HighLevel. Recommended setup:
+
+1. In HighLevel, connect a subdomain such as `go.progressivemarketing.pro` and move the trial order form funnel onto it. Update the two trial URLs in the Customizer to the new address.
+2. Point `progressivemarketing.pro` and `www` (A record) to the cPanel server.
+3. Once nothing uses `vet.progressivemarketing.pro`, point it to cPanel as well and redirect it to `https://progressivemarketing.pro/growth360/` (cPanel → Domains → Redirects), so old links keep working.
+
+Until step 1 is done, leave `vet.progressivemarketing.pro` on HighLevel: the trial buttons point to its `/trial-form` page.
 
 ## Deployment (GitHub Actions → cPanel)
 

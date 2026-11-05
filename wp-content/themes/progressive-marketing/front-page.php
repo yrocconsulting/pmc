@@ -109,7 +109,7 @@ $cases = pmc_case_studies();
 			<h2 class="section-title">Growth360™ for Veterinary Clinics</h2>
 			<p class="lead-sm">Our veterinary program combines PMC Driveby, PMC Reputation Shield™, and monthly executive reporting. It starts with a complimentary seven-day Executive Evaluation™, with no consultation call and no sales presentation.</p>
 		</div>
-		<a class="btn btn-primary btn-lg" href="https://vet.progressivemarketing.pro">Start my Executive Evaluation <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
+		<a class="btn btn-primary btn-lg" href="<?php echo esc_url( home_url( '/growth360/' ) ); ?>">Explore Growth360™ <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
 	</div>
 </section>
 

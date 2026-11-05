@@ -22,7 +22,7 @@ if ( ! $cases ) {
 			<p class="lead"><?php echo esc_html( $ind['lead'] ); ?></p>
 			<div class="hero-actions">
 				<?php if ( ! empty( $ind['program'] ) ) : ?>
-					<a class="btn btn-primary btn-lg" href="<?php echo esc_url( $ind['program']['url'] ); ?>"><?php echo esc_html( $ind['program']['cta'] ); ?> <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
+					<a class="btn btn-primary btn-lg" href="<?php echo esc_url( home_url( $ind['program']['url'] ) ); ?>"><?php echo esc_html( $ind['program']['cta'] ); ?> <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
 					<a class="btn btn-ghost btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">Free 7-day Driveby trial</a>
 				<?php else : ?>
 					<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">Start my free trial <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>

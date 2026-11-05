@@ -24,6 +24,7 @@ function pmc_meta_description() {
 		'case-studies' => 'Real before-and-after Google Maps ranking results from clinics using PMC Driveby: #8 to #1 for “chiropractor near me,” 97.53% share of local voice for an animal hospital, and more.',
 		'about-us'     => 'Progressive Marketing Concepts helps local businesses dominate Google Maps with PMC Driveby, precision Google Business Profile optimization.',
 		'contact-us'   => 'Start a free 7-day PMC Driveby trial or call (817) 703-3689 to talk with Progressive Marketing Concepts.',
+		'growth360'    => 'Growth360™ helps established veterinary clinics improve local search visibility, understand their online reputation, and make it easier for pet owners to choose their practice. Start a complimentary Executive Evaluation™.',
 		'industries'   => 'Google Maps ranking for medical clinics, auto dealerships, hotels, and veterinary clinics.',
 	);
 	if ( is_front_page() ) {

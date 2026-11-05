@@ -178,7 +178,7 @@ function pmc_industries() {
 			),
 			'program'   => array(
 				'name' => 'Growth360™ for Veterinary Clinics',
-				'url'  => 'https://vet.progressivemarketing.pro',
+				'url'  => '/growth360/',
 				'cta'  => 'Start my Executive Evaluation',
 			),
 		),

@@ -51,6 +51,7 @@ function pmc_activate() {
 		'case-studies' => pmc_ensure_page( 'Case Studies', 'case-studies' ),
 		'about-us'     => pmc_ensure_page( 'About Us', 'about-us' ),
 		'contact-us'   => pmc_ensure_page( 'Contact Us', 'contact-us' ),
+		'growth360'    => pmc_ensure_page( 'Growth360 for Veterinary Clinics', 'growth360' ),
 		'privacy'      => pmc_ensure_page( 'Privacy Policy', 'privacy-policy', 0, '<!-- wp:paragraph --><p>Add your privacy policy here (Settings → Privacy can generate a starting draft).</p><!-- /wp:paragraph -->' ),
 		'terms'        => pmc_ensure_page( 'Terms of Service', 'terms-of-service', 0, '<!-- wp:paragraph --><p>Add your terms of service here.</p><!-- /wp:paragraph -->' ),
 	);
@@ -99,3 +100,14 @@ function pmc_activate() {
 	flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'pmc_activate' );
+
+/**
+ * Re-run setup after a theme update that adds pages (setup never overwrites).
+ */
+function pmc_maybe_upgrade() {
+	if ( get_option( 'pmc_setup_version' ) !== PMC_VERSION ) {
+		pmc_activate();
+		update_option( 'pmc_setup_version', PMC_VERSION );
+	}
+}
+add_action( 'admin_init', 'pmc_maybe_upgrade' );

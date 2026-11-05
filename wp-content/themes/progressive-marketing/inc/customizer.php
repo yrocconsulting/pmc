@@ -16,7 +16,10 @@ function pmc_defaults() {
 		'email'          => 'dan@progressivemarketing.pro',
 		'location'       => 'Dallas–Fort Worth, Texas',
 		'rep_name'       => 'Dan Mikals',
-		'trial_url'      => '',
+		'trial_url'      => 'https://vet.progressivemarketing.pro/trial-form',
+		'ghl_form'       => '',
+		'vet_eval_url'   => 'https://vet.progressivemarketing.pro/trial-form',
+		'vet_video_url'  => 'https://assets.cdn.filesafe.space/0bvlnDHyDCoHlrLzW8oG/media/6aecc9b342ff25478cd79f59.mp4',
 		'topbar_text'    => 'Rank in the top 3 on Google Maps. Start a free 7-day PMC Driveby trial.',
 		'notify_email'   => '',
 		'webhook_url'    => '',
@@ -36,7 +39,8 @@ function pmc_opt( $key ) {
 }
 
 /**
- * URL for the main "start trial" button. Defaults to the on-site signup form.
+ * URL for every "start free trial" button: the HighLevel order form.
+ * If it is cleared, buttons fall back to the on-site form on the Contact page.
  */
 function pmc_trial_url() {
 	$url = pmc_opt( 'trial_url' );
@@ -62,11 +66,14 @@ function pmc_customize_register( $wp_customize ) {
 		'email'         => array( 'Public email address', 'email', 'sanitize_email' ),
 		'location'      => array( 'Service area shown in footer', 'text', 'sanitize_text_field' ),
 		'rep_name'      => array( 'Representative name (Contact page)', 'text', 'sanitize_text_field' ),
-		'trial_url'     => array( 'Free trial button URL (leave blank to use the on-site signup form)', 'url', 'esc_url_raw' ),
+		'trial_url'     => array( 'Free trial button URL (HighLevel order form for the PMC Driveby trial)', 'url', 'esc_url_raw' ),
+		'ghl_form'      => array( 'HighLevel form ID or form link for the Contact page (Sites → Forms → Integrate)', 'text', 'sanitize_text_field' ),
+		'vet_eval_url'  => array( 'Growth360 "Start my Executive Evaluation" button URL (HighLevel)', 'url', 'esc_url_raw' ),
+		'vet_video_url' => array( 'Growth360 overview video URL (.mp4)', 'url', 'esc_url_raw' ),
 		'topbar_text'   => array( 'Top bar announcement (blank hides it)', 'text', 'sanitize_text_field' ),
-		'notify_email'  => array( 'Send signup form submissions to (blank = public email)', 'email', 'sanitize_email' ),
-		'webhook_url'   => array( 'Forward signups to webhook URL (HighLevel / Jumper Media / Zapier)', 'url', 'esc_url_raw' ),
-		'thankyou_text' => array( 'Message shown after the signup form is sent', 'textarea', 'sanitize_textarea_field' ),
+		'notify_email'  => array( 'Backup form only: send submissions to (blank = public email)', 'email', 'sanitize_email' ),
+		'webhook_url'   => array( 'Backup form only: forward submissions to webhook URL (HighLevel inbound webhook)', 'url', 'esc_url_raw' ),
+		'thankyou_text' => array( 'Backup form only: message shown after sending', 'textarea', 'sanitize_textarea_field' ),
 	);
 
 	$defaults = pmc_defaults();

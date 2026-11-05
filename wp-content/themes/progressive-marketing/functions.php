@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PMC_VERSION', '1.0.0' );
+define( 'PMC_VERSION', '1.1.0' );
 define( 'PMC_DIR', get_template_directory() );
 define( 'PMC_URI', get_template_directory_uri() );
 
@@ -15,6 +15,7 @@ require PMC_DIR . '/inc/content.php';
 require PMC_DIR . '/inc/helpers.php';
 require PMC_DIR . '/inc/customizer.php';
 require PMC_DIR . '/inc/contact-form.php';
+require PMC_DIR . '/inc/highlevel.php';
 require PMC_DIR . '/inc/seo.php';
 require PMC_DIR . '/inc/activation.php';
 
