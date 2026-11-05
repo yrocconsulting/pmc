@@ -1,0 +1,51 @@
+name: Deploy theme to cPanel
+
+# Uploads the theme to the WordPress install on cPanel over FTPS.
+# Runs on every push to main that touches the theme, or manually from the Actions tab.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wp-content/themes/progressive-marketing/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: none
+
+      - name: Lint PHP
+        run: |
+          for f in $(find wp-content/themes/progressive-marketing -name '*.php'); do
+            php -l "$f" > /dev/null || exit 1
+          done
+
+      - name: Upload theme over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.CPANEL_FTP_SERVER }}
+          username: ${{ secrets.CPANEL_FTP_USERNAME }}
+          password: ${{ secrets.CPANEL_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./wp-content/themes/progressive-marketing/
+          # Path from the FTP account's home folder to the theme folder.
+          # Set the CPANEL_THEME_DIR variable if yours differs from the default.
+          server-dir: ${{ vars.CPANEL_THEME_DIR || 'public_html/wp-content/themes/progressive-marketing/' }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.DS_Store
