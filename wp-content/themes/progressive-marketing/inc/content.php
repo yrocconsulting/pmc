@@ -1,9 +1,14 @@
 <?php
 /**
- * Site content: case studies, industries, Driveby steps, FAQs.
+ * Site content.
+ *
+ * Voice: about 85% the client's future (what their business looks like after
+ * working with us), about 15% the services that get them there. Write in the
+ * second person, future or present tense, concrete and calm. No invented stats:
+ * every number on the site comes from a real client report.
  *
  * Content lives here (not in the database) so it is versioned in Git and
- * deployed with the theme. Edit this file to change copy or add a case study.
+ * deployed with the theme.
  *
  * @package ProgressiveMarketing
  */
@@ -11,58 +16,130 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Case studies. Numbers come from the before/after geo-grid reports.
+ * The three primary services. Keys are the page slugs under /services/.
+ *
+ * 'draft' => true marks copy that still needs details from PMC. It shows a
+ * small "draft" badge to logged-in editors only.
+ */
+function pmc_services() {
+	return array(
+		'driveby-review-guard' => array(
+			'name'     => 'Driveby & Review Guard',
+			'tagline'  => 'Found first. Trusted on sight.',
+			'icon'     => 'pin',
+			'future'   => 'Your business sits at the top of Google Maps across your whole market, and every review customers read makes the decision easier.',
+			'summary'  => 'PMC Driveby™ moves your Google Business Profile into the top three on the map for the searches that bring in customers. PMC Review Guard™ watches your reputation continuously and flags review risks before they cost you business.',
+			'parts'    => array(
+				array( 'PMC Driveby™', 'Location-based ranking that expands where you show up in the top three, keyword by keyword, across your service area. Continuous monitoring keeps you there.' ),
+				array( 'PMC Review Guard™', 'Ongoing reputation monitoring and review-risk identification, so you see problems early and your star rating keeps working for you.' ),
+				array( 'Executive reporting', 'Monthly trends, reputation health, competitive positioning, and recommendations. What changed, why, and what to do next.' ),
+			),
+			'outcomes' => array(
+				'Customers searching “near me” see you first, from every part of town.',
+				'Your reviews read like a recommendation, not a risk.',
+				'You know exactly where you rank, and so does your team.',
+			),
+			'draft'    => false,
+		),
+		'ripple'               => array(
+			'name'     => 'Ripple',
+			'tagline'  => 'One win, felt everywhere.',
+			'icon'     => 'ripple',
+			'future'   => 'Every happy customer, every review, every mention travels further, and your name shows up wherever your next customer is looking.',
+			'summary'  => 'Ripple extends the momentum you build on the map into the rest of your market. [Draft: replace with the Ripple service details.]',
+			'parts'    => array(
+				array( 'Reach', '[Draft] What Ripple does first.' ),
+				array( 'Amplify', '[Draft] How Ripple multiplies results.' ),
+				array( 'Measure', '[Draft] How Ripple is reported.' ),
+			),
+			'outcomes' => array(
+				'Your best moments keep working long after they happen.',
+				'People hear about you before they ever search for you.',
+				'Momentum compounds instead of resetting every month.',
+			),
+			'draft'    => true,
+		),
+		'website-builds'       => array(
+			'name'     => 'Website Builds',
+			'tagline'  => 'A website that closes.',
+			'icon'     => 'browser',
+			'future'   => 'Visitors land on a site that answers their questions, earns their trust, and turns them into booked appointments, and AI assistants can read it and recommend you.',
+			'summary'  => 'Fast, high-end websites designed to convert the attention Driveby and Ripple create, and built so search engines and AI assistants understand exactly what you do. [Draft: add build process, timeline, and what’s included.]',
+			'parts'    => array(
+				array( 'Built to convert', 'Clear offers, proof, and one obvious next step on every page.' ),
+				array( 'Built for AI search', 'Structured data, clean semantic pages, and answers written the way people ask questions, so ChatGPT, Gemini, and Google’s AI Overviews can cite you.' ),
+				array( 'Built to last', 'Fast, secure, mobile-first, and easy for your team to update.' ),
+			),
+			'outcomes' => array(
+				'Your website becomes your best salesperson, working every hour of the day.',
+				'AI assistants describe your business accurately and send customers your way.',
+				'Every dollar you spend on visibility lands somewhere that converts.',
+			),
+			'draft'    => true,
+		),
+	);
+}
+
+/**
+ * Future-state pillars used on the home page.
+ */
+function pmc_futures() {
+	return array(
+		array( 'Found first', 'When someone nearby needs what you do, your name is at the top of the map, in the AI answer, and in the conversation.' ),
+		array( 'Trusted on sight', 'Your reviews, your profile, and your website all say the same thing: this is the safe choice.' ),
+		array( 'Chosen, again and again', 'The phone rings with the right customers. Appointments book themselves. Growth stops depending on luck.' ),
+	);
+}
+
+/**
+ * "A day in your future": illustrative moments shown in the phone feed and timeline.
+ * These are illustrations, labeled as such on the page, not client data.
+ */
+function pmc_future_day() {
+	return array(
+		array( '7:42 AM', 'call', 'New call from Google Maps', '“Saw you were top-rated. Do you have anything today?”' ),
+		array( '9:15 AM', 'star', 'New 5-star review', '“Found them on the map, booked in two minutes.”' ),
+		array( '11:03 AM', 'calendar', 'Appointment booked online', 'From your website, after reading your FAQ.' ),
+		array( '1:30 PM', 'ai', 'Recommended by an AI assistant', '“Top choice nearby, known for fast service and great reviews.”' ),
+		array( '3:48 PM', 'shield', 'Review Guard alert resolved', 'A risky review flagged and handled before it spread.' ),
+		array( '5:20 PM', 'chart', 'Weekly ranking report', 'Top 3 across your service area.' ),
+	);
+}
+
+/**
+ * Case studies. Numbers come from before/after geo-grid reports.
  * ARP = average ranking position (lower is better).
- * SOLV = share of local voice (% of grid points where the profile ranks in the top 3).
+ * SOLV = share of local voice (% of grid points ranking in the top 3).
+ * Each image shows the "before" grid on the left half and "after" on the right.
  */
 function pmc_case_studies() {
 	return array(
-		'mansfield-chiropractor' => array(
+		'mansfield-chiropractor'     => array(
 			'title'     => 'Mansfield Chiropractor',
 			'location'  => 'Mansfield, TX',
 			'industry'  => 'medical-clinics',
 			'label'     => 'Chiropractic & wellness',
-			'headline'  => 'From #8 to #1 citywide for “chiropractor near me” in about a month.',
-			'summary'   => 'A local chiropractic clinic offering chiropractic care, medically supervised weight loss, IV nutrient therapy, electrical muscle stimulation, therapeutic ultrasound, and personalized physical rehabilitation.',
-			'approach'  => 'PMC Driveby ran its location-based ranking system across the clinic’s service area for its two highest-value searches.',
+			'headline'  => 'Number one citywide for “chiropractor near me,” in about a month.',
+			'summary'   => 'A local clinic offering chiropractic care, medically supervised weight loss, IV nutrient therapy, electrical muscle stimulation, therapeutic ultrasound, and physical rehabilitation.',
+			'approach'  => 'PMC Driveby ran across the clinic’s service area for its two highest-value searches.',
 			'highlight' => array( 'value' => '#8 → #1', 'label' => '“Chiropractor near me”' ),
 			'results'   => array(
-				array(
-					'keyword' => 'Chiropractor near me',
-					'before'  => 'Rank 8 · ARP 7.61 · 1.23% SOLV',
-					'after'   => 'Rank 1.5 · ARP 2.67 · 71.61% SOLV',
-					'image'   => 'mansfield-chiropractor-near-me.webp',
-				),
-				array(
-					'keyword' => 'Chiropractor',
-					'before'  => 'Rank 8 · 1.23% SOLV',
-					'after'   => 'Rank 2 · 67.9% SOLV',
-					'image'   => 'mansfield-chiropractor.webp',
-				),
+				array( 'keyword' => 'Chiropractor near me', 'before' => 'Rank 8 · ARP 7.61 · 1.23% SOLV', 'after' => 'Rank 1.5 · ARP 2.67 · 71.61% SOLV', 'image' => 'mansfield-chiropractor-near-me.webp' ),
+				array( 'keyword' => 'Chiropractor', 'before' => 'Rank 8 · 1.23% SOLV', 'after' => 'Rank 2 · 67.9% SOLV', 'image' => 'mansfield-chiropractor.webp' ),
 			),
 		),
-		'rockwall-wellness-center' => array(
+		'rockwall-wellness-center'   => array(
 			'title'     => 'Rockwall Wellness Center',
 			'location'  => 'Rockwall, TX',
 			'industry'  => 'medical-clinics',
 			'label'     => 'Wellness & IV therapy',
-			'headline'  => 'A national wellness brand went from 1.23% to 76.54% share of local voice.',
-			'summary'   => 'A wellness center offering TRT, PRP, IV therapies (Myers’ Cocktail, Immune Booster IV), bioidentical hormone replacement, and wellness programs.',
-			'approach'  => 'Driveby targeted the center’s core “near me” search and a high-margin service keyword. The service keyword moved from position 13 to position 5 after one week.',
+			'headline'  => 'From 1.23% to 76.54% share of local voice.',
+			'summary'   => 'A wellness center offering TRT, PRP, IV therapies, bioidentical hormone replacement, and wellness programs.',
+			'approach'  => 'Driveby targeted the center’s core “near me” search and a high-margin service. The service keyword moved from position 13 to 5 in one week.',
 			'highlight' => array( 'value' => '76.54%', 'label' => 'Share of local voice' ),
 			'results'   => array(
-				array(
-					'keyword' => 'Wellness center near me',
-					'before'  => 'Rank 7 · 1.23% SOLV',
-					'after'   => 'Rank 2 · 76.54% SOLV',
-					'image'   => 'rockwall-wellness-center-near-me.webp',
-				),
-				array(
-					'keyword' => 'Immune Booster IV',
-					'before'  => 'Rank 13 · 1.23% SOLV',
-					'after'   => 'Rank 5 · 32.1% SOLV (after 7 days)',
-					'image'   => 'rockwall-immune-booster-iv.webp',
-				),
+				array( 'keyword' => 'Wellness center near me', 'before' => 'Rank 7 · 1.23% SOLV', 'after' => 'Rank 2 · 76.54% SOLV', 'image' => 'rockwall-wellness-center-near-me.webp' ),
+				array( 'keyword' => 'Immune Booster IV', 'before' => 'Rank 13 · 1.23% SOLV', 'after' => 'Rank 5 · 32.1% SOLV (after 7 days)', 'image' => 'rockwall-immune-booster-iv.webp' ),
 			),
 		),
 		'gilbert-weight-loss-clinic' => array(
@@ -70,144 +147,159 @@ function pmc_case_studies() {
 			'location'  => 'Gilbert, AZ',
 			'industry'  => 'medical-clinics',
 			'label'     => 'Weight loss & HRT',
-			'headline'  => 'A weight loss clinic came out of nowhere to rank across its whole service area.',
-			'summary'   => 'A clinic offering medically supervised weight loss, hormone replacement therapy, peptide therapy, IV therapy, and metabolic health services.',
-			'approach'  => 'Driveby expanded the clinic’s service radius and built keyword authority for its two most important services.',
+			'headline'  => 'Out of nowhere to visible across the entire service area.',
+			'summary'   => 'A clinic offering medically supervised weight loss, hormone replacement therapy, peptide therapy, IV therapy, and metabolic health.',
+			'approach'  => 'Driveby expanded the clinic’s service radius and built authority for its two most important services.',
 			'highlight' => array( 'value' => '100%', 'label' => 'Grid coverage on both keywords' ),
 			'results'   => array(
-				array(
-					'keyword' => 'Weight loss service',
-					'before'  => 'ARP 6.63 · 20.99% SOLV',
-					'after'   => 'ARP 2.85 · 76.54% SOLV',
-					'image'   => 'gilbert-weight-loss-service.webp',
-				),
-				array(
-					'keyword' => 'Hormone replacement therapy',
-					'before'  => 'ARP 9.67 · 1.23% SOLV',
-					'after'   => 'ARP 3.3 · 61.73% SOLV',
-					'image'   => 'gilbert-hormone-replacement-therapy.webp',
-				),
+				array( 'keyword' => 'Weight loss service', 'before' => 'ARP 6.63 · 20.99% SOLV', 'after' => 'ARP 2.85 · 76.54% SOLV', 'image' => 'gilbert-weight-loss-service.webp' ),
+				array( 'keyword' => 'Hormone replacement therapy', 'before' => 'ARP 9.67 · 1.23% SOLV', 'after' => 'ARP 3.3 · 61.73% SOLV', 'image' => 'gilbert-hormone-replacement-therapy.webp' ),
 			),
 		),
-		'grapevine-animal-clinic' => array(
+		'grapevine-animal-clinic'    => array(
 			'title'     => 'Animal Clinic',
 			'location'  => 'Grapevine, TX',
 			'industry'  => 'veterinary-clinics',
 			'label'     => 'Veterinary',
-			'headline'  => 'An animal hospital took over the map: 97.53% share of local voice.',
+			'headline'  => 'The map’s clear first choice: 97.53% share of local voice.',
 			'summary'   => 'A full-service animal hospital offering wellness exams, emergency care, diagnostics, surgery, dental cleanings, and vaccinations.',
 			'approach'  => 'Driveby focused on the two searches pet owners use most when choosing a vet.',
 			'highlight' => array( 'value' => '97.53%', 'label' => '“Animal hospital near me”' ),
 			'results'   => array(
-				array(
-					'keyword' => 'Animal hospital near me',
-					'before'  => 'Rank 8 · ARP 7.81 · 1.23% SOLV',
-					'after'   => 'Rank 1 · ARP 1.69 · 97.53% SOLV',
-					'image'   => 'grapevine-animal-hospital-near-me.webp',
-				),
-				array(
-					'keyword' => 'Animal hospital',
-					'before'  => 'Rank 8 · ARP 6.48 · 2.47% SOLV',
-					'after'   => 'Rank 1 · ARP 2.06 · 91.36% SOLV',
-					'image'   => 'grapevine-animal-hospital.webp',
-				),
+				array( 'keyword' => 'Animal hospital near me', 'before' => 'Rank 8 · ARP 7.81 · 1.23% SOLV', 'after' => 'Rank 1 · ARP 1.69 · 97.53% SOLV', 'image' => 'grapevine-animal-hospital-near-me.webp' ),
+				array( 'keyword' => 'Animal hospital', 'before' => 'Rank 8 · ARP 6.48 · 2.47% SOLV', 'after' => 'Rank 1 · ARP 2.06 · 91.36% SOLV', 'image' => 'grapevine-animal-hospital.webp' ),
 			),
 		),
 	);
 }
 
 /**
- * Industries served. Keys match the page slugs under /industries/.
+ * Industries. Keys match page slugs under /industries/.
  */
 function pmc_industries() {
 	return array(
 		'medical-clinics'    => array(
 			'name'      => 'Medical Clinics',
-			'short'     => 'Chiropractors, med spas, weight loss, hormone therapy, primary care, dental.',
 			'icon'      => 'medical',
-			'hero'      => 'More new patients start on Google Maps. Make sure they find you first.',
-			'lead'      => 'Patients compare the clinics Google shows them, read a few reviews, and call. If your practice isn’t in the top three on the map, most of them never see you. PMC Driveby puts your Google Business Profile where patients are choosing.',
+			'future'    => 'A schedule full of the patients you want to treat.',
+			'short'     => 'Chiropractic, med spa, weight loss, hormone therapy, primary care, dental.',
+			'hero'      => 'Picture a schedule that fills itself with the patients you want.',
+			'lead'      => 'Patients compare a few clinics on the map, read reviews, and call. In your future, yours is the clinic they see first, trust immediately, and book without a second thought.',
 			'customers' => 'patients',
 			'searches'  => array( 'chiropractor near me', 'med spa near me', 'weight loss clinic', 'hormone replacement therapy', 'IV therapy near me', 'urgent care' ),
-			'points'    => array(
-				array( 'Win the “near me” search', 'Rank for the searches patients make from their phone, across your whole service area, not just the block around your office.' ),
-				array( 'Rank for each service line', 'Weight loss, HRT, IV therapy, and other high-value services each get their own keyword tracking and visibility.' ),
-				array( 'See it on the grid', 'Before-and-after geo-grid reports show exactly where you rank across town for every tracked keyword.' ),
+			'moments'   => array(
+				array( 'Every service line has demand', 'Weight loss, HRT, IV therapy: each one ranks on its own, so you grow the services that matter most.' ),
+				array( 'Your reputation does the selling', 'New patients arrive already confident, because every review they read points to you.' ),
+				array( 'You see growth coming', 'Monthly reporting shows visibility, reputation, and position against nearby clinics.' ),
 			),
 		),
 		'auto-dealerships'   => array(
 			'name'      => 'Auto Dealerships',
-			'short'     => 'New and used car sales, service departments, body shops.',
 			'icon'      => 'auto',
-			'hero'      => 'Put your dealership at the top of the map when buyers are ready to visit.',
-			'lead'      => 'Car shoppers search “dealership near me,” compare a handful of lots on the map, and drive to one. Service customers do the same. PMC Driveby builds your Google Business Profile’s visibility for the searches that bring buyers and service customers onto your lot.',
+			'future'    => 'Buyers decide on you before they reach the lot.',
+			'short'     => 'New and used sales, service departments, body shops.',
+			'hero'      => 'Become the obvious choice before the customer ever visits.',
+			'lead'      => 'Decisions happen before the showroom. Shoppers search, compare reviews, and form a preference long before they call. In your future, that preference is you.',
 			'customers' => 'buyers',
 			'searches'  => array( 'car dealership near me', 'used cars near me', 'truck dealer', 'auto service near me', 'oil change near me', 'car financing' ),
-			'points'    => array(
-				array( 'Sales and service', 'Grow visibility for both your sales and service departments, so each Google profile ranks for what it offers.' ),
-				array( 'Your whole market', 'Rank across the surrounding towns and zip codes your buyers drive in from, not just your street.' ),
-				array( 'Clear reporting', 'Geo-grid reports show average ranking position and share of local voice for every keyword we track.' ),
+			'moments'   => array(
+				array( 'Sales and service both win', 'Each department’s profile ranks for what it sells, so the lot and the service lane stay busy.' ),
+				array( 'Your reviews earn the visit', 'Review Guard catches reputation risks early, so shoppers see a dealership they can trust.' ),
+				array( 'Your whole market knows you', 'You rank across the towns and zip codes buyers drive in from, not just your street.' ),
 			),
+			'program'   => 'automotive',
 		),
 		'hotels'             => array(
 			'name'      => 'Hotels',
-			'short'     => 'Independent hotels, boutique properties, and franchised locations.',
 			'icon'      => 'hotel',
-			'hero'      => 'Get booked directly by travelers searching the map.',
-			'lead'      => 'Travelers open Google Maps, search “hotels near me” or near a venue, and book one of the first few properties they see. Ranking higher on the map means more direct calls and bookings, and less dependence on the online travel agencies.',
+			'future'    => 'Direct bookings from travelers who found you first.',
+			'short'     => 'Independent, boutique, and franchised properties.',
+			'hero'      => 'Imagine travelers booking you directly, every night.',
+			'lead'      => 'Travelers open the map, search near where they need to be, and book one of the first properties they see. In your future, that’s you, booked directly instead of through a travel site.',
 			'customers' => 'guests',
-			'searches'  => array( 'hotels near me', 'hotel near [venue]', 'pet friendly hotel', 'extended stay hotel', 'hotel with pool', 'cheap hotels near me' ),
-			'points'    => array(
-				array( 'More direct bookings', 'Higher map visibility sends more travelers to your own phone line and booking page.' ),
-				array( 'Rank near demand drivers', 'Improve visibility around airports, venues, hospitals, and highways where travelers search.' ),
-				array( 'Measured results', 'Before-and-after grid reports show how your ranking changes across the area.' ),
+			'searches'  => array( 'hotels near me', 'hotel near [venue]', 'pet friendly hotel', 'extended stay hotel', 'hotel with pool', 'hotels near the airport' ),
+			'moments'   => array(
+				array( 'Direct bookings grow', 'Higher map visibility sends travelers to your own phone and booking page.' ),
+				array( 'You own the demand nearby', 'Rank around the airports, venues, and hospitals that bring travelers to town.' ),
+				array( 'Your rating stays an asset', 'Review Guard flags problems early, so your star rating keeps winning the click.' ),
 			),
 		),
 		'veterinary-clinics' => array(
 			'name'      => 'Veterinary Clinics',
-			'short'     => 'General practice, animal hospitals, emergency and specialty vets.',
 			'icon'      => 'vet',
-			'hero'      => 'Pet owners start looking before they call. Make sure they find you.',
-			'lead'      => 'When pet owners look for a vet, they compare nearby clinics, the animals they treat, services, hours, and reviews before they call. PMC Driveby moves your clinic into the top of Google Maps for the searches that bring in new clients.',
+			'future'    => 'The clinic pet owners trust before they call.',
+			'short'     => 'General practice, animal hospitals, emergency and specialty.',
+			'hero'      => 'Your veterinary clinic. The local choice.',
+			'lead'      => 'Pet owners compare nearby clinics, the animals they treat, hours, and reviews before they call. In your future, they finish that search already sure it’s you.',
 			'customers' => 'pet owners',
 			'searches'  => array( 'vet near me', 'animal hospital near me', 'emergency vet', 'dog vaccinations', 'pet dental cleaning', 'exotic animal vet' ),
-			'points'    => array(
-				array( 'Own “animal hospital near me”', 'Our Grapevine client went from rank 8 to rank 1 and 97.53% share of local voice in about a month.' ),
-				array( 'Growth360™ for vets', 'Our veterinary program pairs Driveby with reputation monitoring and monthly executive reporting.' ),
-				array( 'A free evaluation first', 'Start with a complimentary seven-day Executive Evaluation™. No sales presentation.' ),
+			'moments'   => array(
+				array( 'First on the map', 'Our Grapevine client went from rank 8 to rank 1 for “animal hospital near me” in about a month.' ),
+				array( 'Confidence before the call', 'Pet owners see a clear, consistent picture of your clinic everywhere they look.' ),
+				array( 'Leadership sees the whole picture', 'Monthly executive reporting on visibility, reputation, and positioning.' ),
 			),
-			'program'   => array(
-				'name' => 'Growth360™ for Veterinary Clinics',
-				'url'  => '/growth360/',
-				'cta'  => 'Start my Executive Evaluation',
-			),
+			'program'   => 'veterinary',
 		),
 	);
 }
 
 /**
- * How PMC Driveby works.
+ * Growth360™ editions (industry programs with a free Executive Evaluation).
+ * Keys match page slugs under /growth360/.
  */
-function pmc_driveby_steps() {
+function pmc_growth360_editions() {
 	return array(
-		array( 'Connect your profile', 'Tell us your business name exactly as it appears on Google. Your address has to be public on your Google Business Profile for Driveby to work.' ),
-		array( 'Baseline scan', 'We map where you rank today on a geo-grid across your service area for your most important keywords.' ),
-		array( 'Driveby goes to work', 'Our location-based ranking system builds visibility across your service radius and strengthens your authority for each target keyword.' ),
-		array( 'Watch the map turn green', 'Before-and-after grid reports show your average ranking position and share of local voice. Most clients see major movement in 30–45 days.' ),
+		'veterinary' => array(
+			'name'       => 'Veterinary Clinics',
+			'edition'    => 'Veterinary Clinics Edition · V1.0',
+			'headline'   => 'Your veterinary clinic. The local choice.',
+			'lead'       => 'Growth360™ helps established veterinary clinics improve local search visibility, understand their online reputation, and make it easier for pet owners to choose their practice.',
+			'customer'   => 'pet owner',
+			'customers'  => 'pet owners',
+			'business'   => 'clinic',
+			'pillars'    => array( 'Client Discoverability™', 'Client Confidence™', 'Executive Growth Intelligence™' ),
+			'reality_t'  => 'Pet owners start looking before they call.',
+			'reality'    => 'When pet owners look for a veterinarian, they compare nearby clinics, the animals they treat, services, hours, and reviews before calling. Clear, accurate information helps them decide whether your clinic is a fit.',
+			'question'   => 'Can pet owners find your clinic when they search for the services you offer?',
+			'closing'    => 'See what pet owners find when they look for your clinic.',
+			'video'      => 'https://assets.cdn.filesafe.space/0bvlnDHyDCoHlrLzW8oG/media/6aecc9b342ff25478cd79f59.mp4',
+			'eval_url'   => 'https://vet.progressivemarketing.pro/trial-form',
+			'industry'   => 'veterinary-clinics',
+		),
+		'automotive' => array(
+			'name'       => 'Automotive',
+			'edition'    => 'Founding Dealer Edition · V1.0',
+			'headline'   => 'Become the obvious choice.',
+			'lead'       => 'Growth360™ is an executive growth system that helps established dealerships become easier to find, trust, and choose.',
+			'customer'   => 'buyer',
+			'customers'  => 'buyers',
+			'business'   => 'dealership',
+			'pillars'    => array( 'Customer Discoverability™', 'Customer Confidence™', 'Executive Growth Intelligence™' ),
+			'reality_t'  => 'Decisions happen before the showroom.',
+			'reality'    => 'Customers search, compare reviews, and form preferences before they contact a dealer. The dealerships at the top of local results earn more of that consideration.',
+			'question'   => 'You cannot earn a customer who never finds you.',
+			'closing'    => 'See your dealership through the eyes of the market.',
+			'video'      => 'https://assets.cdn.filesafe.space/0bvlnDHyDCoHlrLzW8oG/media/6ae8b645c9d5b7168d96c643.mp4',
+			'eval_url'   => 'https://danm.progressivemarketing.pro/trial-form',
+			'industry'   => 'auto-dealerships',
+		),
 	);
 }
 
 /**
- * FAQs. Also output as FAQPage structured data on pages that show them.
+ * FAQs, written as the questions people (and AI assistants) actually ask.
+ * Output as FAQPage structured data wherever they appear.
  */
 function pmc_faqs() {
 	return array(
-		array( 'What is PMC Driveby?', 'PMC Driveby is a location-based ranking system for Google Business Profiles. It improves where your business appears on Google Maps and in local search for the keywords your customers use, across your whole service area.' ),
-		array( 'How fast will I see results?', 'Our optimization process runs 30–45 days, and many clients see movement much sooner. A Rockwall wellness center moved from position 13 to position 5 for “Immune Booster IV” in seven days.' ),
-		array( 'What do you need from me to start?', 'Your business name as it appears on Google and a Google Business Profile with a public address. If your business doesn’t appear in our signup form, your address may be hidden on Google. Contact us and we’ll help.' ),
-		array( 'What are ARP and SOLV?', 'ARP is your average ranking position across every point on the map grid (lower is better). SOLV, share of local voice, is the percentage of grid points where you rank in the top 3. Every report shows both, before and after.' ),
-		array( 'Is there a free trial?', 'Yes. You can start a free 7-day PMC Driveby trial. Veterinary clinics can also start with a complimentary Growth360™ Executive Evaluation™.' ),
-		array( 'Which businesses do you work with?', 'We focus on medical clinics, auto dealerships, hotels, and veterinary clinics, and Driveby works for most businesses that serve customers from a physical location.' ),
+		array( 'What does Progressive Marketing Concepts do?', 'We help established local businesses become the obvious choice in their market. Our three services are PMC Driveby™ & Review Guard™ (Google Maps visibility and reputation protection), Ripple, and high-end website builds designed for AI search.' ),
+		array( 'What is PMC Driveby?', 'PMC Driveby is a location-based ranking system for Google Business Profiles. It moves your business into the top three on Google Maps for the keywords your customers search, across your whole service area, and keeps monitoring it there.' ),
+		array( 'What is PMC Review Guard?', 'Review Guard is ongoing reputation monitoring with review-risk identification. It flags reviews and patterns that could hurt your rating so you can respond early.' ),
+		array( 'How fast will I see results?', 'Our Driveby optimization runs 30 to 45 days, and many clients see movement sooner. One wellness center moved from position 13 to 5 for a key service in seven days.' ),
+		array( 'How do I know it’s working?', 'Every keyword gets a before-and-after geo-grid report showing your average ranking position (ARP) and share of local voice (SOLV, the share of the map where you rank in the top three), plus monthly executive reporting.' ),
+		array( 'Is there a way to try it first?', 'Yes. You can start a free 7-day PMC Driveby trial, or a complimentary Growth360™ Executive Evaluation for veterinary clinics and dealerships. There’s no sales presentation.' ),
+		array( 'Do you build websites that work with AI search?', 'Yes. Our websites use structured data, clean semantic pages, and plain-language answers so search engines and AI assistants like ChatGPT, Gemini, and Google AI Overviews can understand and recommend your business.' ),
+		array( 'Which businesses do you work with?', 'Established local businesses, especially medical clinics, auto dealerships, hotels, and veterinary clinics. You need a public Google Business Profile and a commitment to your local market.' ),
 	);
 }
 
@@ -221,5 +313,17 @@ function pmc_testimonials() {
 			'name'    => 'Frank Riley',
 			'company' => 'Riley Roofing and Gutters',
 		),
+	);
+}
+
+/**
+ * The path from today to that future (shown as numbered steps).
+ */
+function pmc_process() {
+	return array(
+		array( 'See where you stand', 'A free evaluation or 7-day Driveby trial maps where you rank today, keyword by keyword, across your market.' ),
+		array( 'Claim the map', 'Driveby lifts your Google Business Profile into the top three across your service area, while Review Guard protects your rating.' ),
+		array( 'Spread the momentum', 'Ripple and a high-end website turn that visibility into reach, trust, and booked customers.' ),
+		array( 'Watch it compound', 'Monthly executive reporting shows what changed and where to focus next. Most clients see major movement in 30–45 days.' ),
 	);
 }

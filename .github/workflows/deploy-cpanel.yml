@@ -1,17 +1,12 @@
-name: Deploy theme to cPanel
+name: Deploy theme to cPanel (production)
 
-# Uploads the theme to the WordPress install on cPanel over FTPS.
-# Runs on every push to main that touches the theme, or manually from the Actions tab.
+# Uploads the theme to the production WordPress install on cPanel over FTPS.
+# Manual for now: run it from the Actions tab once production hosting is ready.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'wp-content/themes/progressive-marketing/**'
-      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 concurrency:
-  group: deploy-production
+  group: deploy-cpanel
   cancel-in-progress: false
 
 jobs:

@@ -10,11 +10,23 @@ defined( 'ABSPATH' ) || exit;
 </main>
 
 <footer class="site-footer">
+	<div class="container footer-top">
+		<p class="footer-statement">Become <em>the obvious choice.</em></p>
+		<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">See your future <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
+	</div>
 	<div class="container footer-grid">
 		<div class="footer-brand">
 			<?php pmc_logo( 'brand-invert' ); ?>
-			<p>We put local businesses in the top 3 on Google Maps, where customers choose who to call.</p>
-			<a class="btn btn-primary" href="<?php echo esc_url( pmc_trial_url() ); ?>">Start a free 7-day trial</a>
+			<p>Progressive Marketing Concepts helps established local businesses get found first, trusted on sight, and chosen.</p>
+		</div>
+		<div>
+			<h2 class="footer-title">Services</h2>
+			<ul class="footer-links">
+				<?php foreach ( pmc_services() as $slug => $s ) : ?>
+					<li><a href="<?php echo esc_url( home_url( '/services/' . $slug . '/' ) ); ?>"><?php echo esc_html( $s['name'] ); ?></a></li>
+				<?php endforeach; ?>
+				<li><a href="<?php echo esc_url( home_url( '/growth360/' ) ); ?>">Growth360™</a></li>
+			</ul>
 		</div>
 		<div>
 			<h2 class="footer-title">Industries</h2>
@@ -27,11 +39,9 @@ defined( 'ABSPATH' ) || exit;
 		<div>
 			<h2 class="footer-title">Company</h2>
 			<ul class="footer-links">
-				<li><a href="<?php echo esc_url( home_url( '/driveby/' ) ); ?>">PMC Driveby</a></li>
-				<li><a href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">Case Studies</a></li>
-				<li><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">About Us</a></li>
-				<li><a href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>">Contact Us</a></li>
-				<li><a href="<?php echo esc_url( home_url( '/growth360/' ) ); ?>">Growth360™ for Vets</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">Results</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">About</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>">Contact</a></li>
 			</ul>
 		</div>
 		<div>

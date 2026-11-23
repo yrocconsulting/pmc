@@ -46,17 +46,23 @@ function pmc_activate() {
 
 	$pages = array(
 		'home'         => pmc_ensure_page( 'Home', 'home' ),
-		'driveby'      => pmc_ensure_page( 'PMC Driveby', 'driveby' ),
+		'services'     => pmc_ensure_page( 'Services', 'services' ),
 		'industries'   => pmc_ensure_page( 'Industries', 'industries' ),
-		'case-studies' => pmc_ensure_page( 'Case Studies', 'case-studies' ),
+		'case-studies' => pmc_ensure_page( 'Results', 'case-studies' ),
+		'growth360'    => pmc_ensure_page( 'Growth360', 'growth360' ),
 		'about-us'     => pmc_ensure_page( 'About Us', 'about-us' ),
 		'contact-us'   => pmc_ensure_page( 'Contact Us', 'contact-us' ),
-		'growth360'    => pmc_ensure_page( 'Growth360 for Veterinary Clinics', 'growth360' ),
 		'privacy'      => pmc_ensure_page( 'Privacy Policy', 'privacy-policy', 0, '<!-- wp:paragraph --><p>Add your privacy policy here (Settings → Privacy can generate a starting draft).</p><!-- /wp:paragraph -->' ),
 		'terms'        => pmc_ensure_page( 'Terms of Service', 'terms-of-service', 0, '<!-- wp:paragraph --><p>Add your terms of service here.</p><!-- /wp:paragraph -->' ),
 	);
+	foreach ( pmc_services() as $slug => $svc ) {
+		$pages[ $slug ] = pmc_ensure_page( $svc['name'], $slug, $pages['services'] );
+	}
 	foreach ( pmc_industries() as $slug => $ind ) {
 		$pages[ $slug ] = pmc_ensure_page( $ind['name'], $slug, $pages['industries'] );
+	}
+	foreach ( pmc_growth360_editions() as $slug => $ed ) {
+		$pages[ 'g360-' . $slug ] = pmc_ensure_page( 'Growth360 for ' . $ed['name'], $slug, $pages['growth360'] );
 	}
 
 	if ( 'page' !== get_option( 'show_on_front' ) ) {
@@ -71,14 +77,20 @@ function pmc_activate() {
 	if ( empty( $locations['primary'] ) ) {
 		$menu_id = wp_create_nav_menu( 'Primary' );
 		if ( ! is_wp_error( $menu_id ) ) {
-			wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => 'Driveby', 'menu-item-object' => 'page', 'menu-item-object-id' => $pages['driveby'], 'menu-item-type' => 'post_type', 'menu-item-status' => 'publish' ) );
-			$parent = wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => 'Industries', 'menu-item-object' => 'page', 'menu-item-object-id' => $pages['industries'], 'menu-item-type' => 'post_type', 'menu-item-status' => 'publish' ) );
+			$add = function ( $title, $page_id, $parent = 0 ) use ( $menu_id ) {
+				return wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => $title, 'menu-item-object' => 'page', 'menu-item-object-id' => $page_id, 'menu-item-type' => 'post_type', 'menu-item-parent-id' => $parent, 'menu-item-status' => 'publish' ) );
+			};
+			$parent = $add( 'Services', $pages['services'] );
+			foreach ( pmc_services() as $slug => $svc ) {
+				$add( $svc['name'], $pages[ $slug ], $parent );
+			}
+			$parent = $add( 'Industries', $pages['industries'] );
 			foreach ( pmc_industries() as $slug => $ind ) {
-				wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => $ind['name'], 'menu-item-object' => 'page', 'menu-item-object-id' => $pages[ $slug ], 'menu-item-type' => 'post_type', 'menu-item-parent-id' => $parent, 'menu-item-status' => 'publish' ) );
+				$add( $ind['name'], $pages[ $slug ], $parent );
 			}
-			foreach ( array( 'case-studies' => 'Case Studies', 'about-us' => 'About', 'contact-us' => 'Contact' ) as $slug => $label ) {
-				wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => $label, 'menu-item-object' => 'page', 'menu-item-object-id' => $pages[ $slug ], 'menu-item-type' => 'post_type', 'menu-item-status' => 'publish' ) );
-			}
+			$add( 'Results', $pages['case-studies'] );
+			$add( 'About', $pages['about-us'] );
+			$add( 'Contact', $pages['contact-us'] );
 			$locations['primary'] = $menu_id;
 		}
 	}
@@ -94,7 +106,7 @@ function pmc_activate() {
 	set_theme_mod( 'nav_menu_locations', $locations );
 
 	if ( 'Just another WordPress site' === get_option( 'blogdescription' ) || '' === get_option( 'blogdescription' ) ) {
-		update_option( 'blogdescription', 'Top 3 on Google Maps with PMC Driveby' );
+		update_option( 'blogdescription', 'Become the obvious choice in your market' );
 	}
 
 	flush_rewrite_rules();

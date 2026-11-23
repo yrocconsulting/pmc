@@ -8,11 +8,12 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
-<section class="page-hero page-hero-center">
-	<div class="container narrow">
+<section class="page-hero hero-dark">
+	<div class="hero-grain" aria-hidden="true"></div>
+	<div class="container page-hero-inner" data-reveal>
 		<p class="eyebrow">Contact</p>
-		<h1>Let’s get you on the map.</h1>
-		<p class="lead">Call us, email us, or sign up for a free 7-day PMC Driveby trial below.</p>
+		<h1>Let’s talk about <em>your future.</em></h1>
+		<p class="lead">Call, email, or send a note. Or skip ahead and start a free 7-day PMC Driveby trial.</p>
 	</div>
 </section>
 

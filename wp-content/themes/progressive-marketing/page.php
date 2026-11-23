@@ -1,6 +1,6 @@
 <?php
 /**
- * Default page. Industry pages (children of /industries/) use the industry layout.
+ * Default page. Routes service, industry, and Growth360 child pages to their layouts.
  *
  * @package ProgressiveMarketing
  */
@@ -8,17 +8,20 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 
-$pmc_slug       = get_post_field( 'post_name', get_queried_object_id() );
-$pmc_industries = pmc_industries();
+list( $pmc_type, $pmc_key ) = pmc_page_context();
 
-if ( isset( $pmc_industries[ $pmc_slug ] ) ) {
-	get_template_part( 'template-parts/industry', null, array( 'slug' => $pmc_slug, 'ind' => $pmc_industries[ $pmc_slug ] ) );
+if ( 'service' === $pmc_type ) {
+	get_template_part( 'template-parts/service', null, array( 'slug' => $pmc_key, 'svc' => pmc_services()[ $pmc_key ] ) );
+} elseif ( 'industry' === $pmc_type ) {
+	get_template_part( 'template-parts/industry', null, array( 'slug' => $pmc_key, 'ind' => pmc_industries()[ $pmc_key ] ) );
+} elseif ( 'growth360' === $pmc_type ) {
+	get_template_part( 'template-parts/growth360', null, array( 'slug' => $pmc_key, 'ed' => pmc_growth360_editions()[ $pmc_key ] ) );
 } else {
 	while ( have_posts() ) :
 		the_post();
 		?>
-		<section class="page-hero page-hero-center page-hero-sm">
-			<div class="container narrow"><h1><?php the_title(); ?></h1></div>
+		<section class="page-hero hero-dark page-hero-sm">
+			<div class="container"><h1><?php the_title(); ?></h1></div>
 		</section>
 		<section class="section section-tight">
 			<div class="container narrow prose entry-content"><?php the_content(); ?></div>

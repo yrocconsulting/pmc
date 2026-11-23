@@ -67,6 +67,13 @@ function pmc_icon( $name ) {
 		'bolt'    => '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
 		'eye'     => '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
 		'shield'  => '<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/>',
+		'ripple'  => '<circle cx="12" cy="12" r="2"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9M4.6 4.6a10.5 10.5 0 0 0 0 14.8M19.4 4.6a10.5 10.5 0 0 1 0 14.8"/>',
+		'browser' => '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/><path d="M7 13h6M7 16h10"/>',
+		'call'    => '<path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/>',
+		'star'    => '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+		'calendar' => '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3v3H8z"/>',
+		'ai'      => '<path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>',
+		'play'    => '<circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/>',
 	);
 	if ( ! isset( $paths[ $name ] ) ) {
 		return '';
@@ -142,4 +149,73 @@ function pmc_case_studies_for( $industry ) {
  */
 function pmc_case_url( $slug ) {
 	return home_url( '/case-studies/#' . $slug );
+}
+
+/**
+ * Drag-to-compare slider for a before/after geo-grid image.
+ * The source image holds "before" on its left half and "after" on its right half.
+ *
+ * @param array  $r        Result row (keyword, before, after, image).
+ * @param string $location Location label.
+ */
+function pmc_compare( $r, $location ) {
+	$base = substr( $r['image'], 0, -5 );
+	$alt  = sprintf( 'Google Maps geo-grid for “%s”, %s. Before: %s. After: %s.', $r['keyword'], $location, $r['before'], $r['after'] );
+	ob_start();
+	?>
+	<div class="compare-slider" data-compare style="--pos:50%">
+		<img class="cs-img cs-before" src="<?php echo esc_url( pmc_img( $base . '-before.webp' ) ); ?>" width="285" height="356" loading="lazy" alt="<?php echo esc_attr( $alt ); ?>">
+		<img class="cs-img cs-after" src="<?php echo esc_url( pmc_img( $base . '-after.webp' ) ); ?>" width="285" height="356" loading="lazy" alt="">
+		<span class="cs-tag cs-tag-before">Before</span>
+		<span class="cs-tag cs-tag-after">After</span>
+		<input class="cs-range" type="range" min="0" max="100" value="50" aria-label="<?php echo esc_attr( 'Compare before and after for ' . $r['keyword'] ); ?>">
+		<span class="cs-handle" aria-hidden="true"><span class="cs-knob"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span></span>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+
+/**
+ * Small "draft" badge for copy still waiting on details. Visible to editors only.
+ *
+ * @param array $item Content item with a 'draft' key.
+ */
+function pmc_draft_badge( $item ) {
+	if ( ! empty( $item['draft'] ) && current_user_can( 'edit_pages' ) ) {
+		return '<span class="draft-badge" title="Only editors see this">Draft copy</span>';
+	}
+	return '';
+}
+
+/**
+ * Strip "[Draft …]" notes from copy for public visitors; editors still see them.
+ *
+ * @param string $text Copy.
+ */
+function pmc_copy( $text ) {
+	if ( current_user_can( 'edit_pages' ) ) {
+		return $text;
+	}
+	return trim( preg_replace( '/\s*\[Draft[^\]]*\]/', '', $text ) );
+}
+
+/**
+ * Section heading block.
+ *
+ * @param string $eyebrow Eyebrow.
+ * @param string $title   Title. Wrap words in *asterisks* for the italic serif accent.
+ * @param string $lead    Optional lead.
+ * @param string $class   Extra class.
+ */
+function pmc_heading( $eyebrow, $title, $lead = '', $class = '' ) {
+	$title = preg_replace( '/\*(.+?)\*/', '<em>$1</em>', esc_html( $title ) );
+	echo '<header class="sec-head ' . esc_attr( $class ) . '" data-reveal>';
+	if ( $eyebrow ) {
+		echo '<p class="eyebrow">' . esc_html( $eyebrow ) . '</p>';
+	}
+	echo '<h2 class="sec-title">' . $title . '</h2>'; // phpcs:ignore -- escaped above.
+	if ( $lead ) {
+		echo '<p class="sec-lead">' . esc_html( $lead ) . '</p>';
+	}
+	echo '</header>';
 }

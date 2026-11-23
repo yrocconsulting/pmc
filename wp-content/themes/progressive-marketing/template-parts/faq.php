@@ -1,17 +1,17 @@
 <?php
 /**
- * FAQ list.
+ * FAQ (also output as FAQPage structured data).
  *
  * @package ProgressiveMarketing
  */
 
 defined( 'ABSPATH' ) || exit;
+$GLOBALS['pmc_faq_shown'] = true;
 ?>
 <section class="section">
-	<div class="container narrow">
-		<p class="eyebrow">FAQ</p>
-		<h2 class="section-title">Questions we hear a lot</h2>
-		<div class="faq">
+	<div class="container faq-layout">
+		<?php pmc_heading( 'Questions', 'Straight *answers.*', 'The questions business owners ask us most, answered plainly.' ); ?>
+		<div class="faq" data-reveal>
 			<?php foreach ( pmc_faqs() as $item ) : ?>
 				<details>
 					<summary><?php echo esc_html( $item[0] ); ?></summary>

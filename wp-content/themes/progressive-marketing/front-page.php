@@ -1,115 +1,97 @@
 <?php
 /**
- * Home page.
+ * Home page. About 85% the client's future, 15% the services.
  *
  * @package ProgressiveMarketing
  */
 
 defined( 'ABSPATH' ) || exit;
 get_header();
-$cases = pmc_case_studies();
 ?>
 
-<section class="hero">
+<section class="hero hero-dark" data-spotlight>
+	<div class="hero-grain" aria-hidden="true"></div>
 	<div class="container hero-split">
 		<div class="hero-copy">
-			<p class="eyebrow eyebrow-light">PMC Driveby · Google Maps ranking</p>
-			<h1>Own the top 3 on Google Maps in your market.</h1>
-			<p class="lead">Local customers pick from the first few businesses Google shows them on the map. PMC Driveby moves your Google Business Profile into those spots for the searches that bring in patients, buyers, guests, and pet owners.</p>
-			<div class="hero-actions">
-				<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">Start my free 7-day trial <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
-				<a class="btn btn-ghost-light btn-lg" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">See client results</a>
+			<p class="eyebrow" data-reveal>For established local businesses</p>
+			<h1 data-reveal>Ninety days from now, you’re <em>the obvious choice.</em></h1>
+			<p class="lead" data-reveal>Your name at the top of the map. Reviews that sell for you. A website that books the appointment. AI assistants that recommend you by name. That’s the future we build for business owners, and it starts with seeing where you stand today.</p>
+			<div class="hero-actions" data-reveal>
+				<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">See your future <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
+				<a class="btn btn-outline-light btn-lg" href="#proof">See real results</a>
 			</div>
-			<p class="hero-note"><?php echo pmc_icon( 'check' ); // phpcs:ignore ?> Free 7-day trial <?php echo pmc_icon( 'check' ); // phpcs:ignore ?> Results in 30–45 days <?php echo pmc_icon( 'check' ); // phpcs:ignore ?> No sales presentation</p>
+			<p class="hero-note" data-reveal><?php echo pmc_icon( 'check' ); // phpcs:ignore ?> Free 7-day trial <?php echo pmc_icon( 'check' ); // phpcs:ignore ?> No sales presentation <?php echo pmc_icon( 'check' ); // phpcs:ignore ?> Results you can see on a map</p>
 		</div>
 		<div class="hero-visual">
-			<div class="grid-card" data-grid-card>
-				<div class="grid-card-head">
-					<span class="grid-card-kw"><?php echo pmc_icon( 'pin' ); // phpcs:ignore ?> “animal hospital near me”</span>
-					<span class="grid-card-state" data-grid-label>Before Driveby</span>
-				</div>
-				<?php echo pmc_rank_grid( 7 ); // phpcs:ignore ?>
-				<div class="grid-card-foot">
-					<div><span class="k">Rank</span><span class="v" data-grid-rank>8</span></div>
-					<div><span class="k">Share of local voice</span><span class="v" data-grid-solv>1.23%</span></div>
-				</div>
-				<button class="grid-toggle" type="button" data-grid-toggle aria-pressed="false">Show after</button>
-			</div>
-			<p class="grid-caption">Illustration based on our Grapevine, TX animal hospital client: rank 8 → rank 1, 1.23% → 97.53% share of local voice.</p>
+			<?php get_template_part( 'template-parts/phone-feed' ); ?>
 		</div>
 	</div>
-</section>
-
-<section class="stats-strip" aria-label="Client results">
-	<div class="container stats">
-		<div class="stat"><span class="stat-v">#8 → #1</span><span class="stat-k">“Chiropractor near me”<br>Mansfield, TX</span></div>
-		<div class="stat"><span class="stat-v">97.53%</span><span class="stat-k">Share of local voice<br>Animal hospital, Grapevine, TX</span></div>
-		<div class="stat"><span class="stat-v">100%</span><span class="stat-k">Grid coverage<br>Weight loss clinic, Gilbert, AZ</span></div>
-		<div class="stat"><span class="stat-v">7 days</span><span class="stat-k">#13 → #5 for “Immune Booster IV”<br>Rockwall, TX</span></div>
-	</div>
-</section>
-
-<section class="section">
-	<div class="container split">
-		<div>
-			<p class="eyebrow">Why the map pack</p>
-			<h2 class="section-title">If you’re not in the top 3, most customers never see you.</h2>
-		</div>
-		<div class="prose">
-			<p>When someone searches “near me” on their phone, Google shows a map with three businesses above everything else. That’s where people compare reviews, check hours, and tap to call.</p>
-			<p>Where you show up depends on where the customer is standing. You might rank #2 next to your office and #15 two miles away. PMC Driveby builds your visibility across your <em>whole</em> service area, and we prove it with a before-and-after geo-grid for every keyword.</p>
-			<a class="link-arrow" href="<?php echo esc_url( home_url( '/driveby/' ) ); ?>">How PMC Driveby works <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
-		</div>
-	</div>
-</section>
-
-<section class="section section-soft">
 	<div class="container">
-		<p class="eyebrow">How it works</p>
-		<h2 class="section-title">Four steps to the top of the map</h2>
-		<?php get_template_part( 'template-parts/steps' ); ?>
+		<dl class="hero-stats" data-reveal>
+			<div><dt>#8 → #1</dt><dd>“Chiropractor near me,” Mansfield, TX</dd></div>
+			<div><dt data-count="97.53" data-suffix="%">97.53%</dt><dd>Share of local voice, animal hospital</dd></div>
+			<div><dt data-count="100" data-suffix="%">100%</dt><dd>Grid coverage, weight loss clinic</dd></div>
+			<div><dt data-count="7" data-suffix=" days">7 days</dt><dd>#13 → #5 for a key service</dd></div>
+		</dl>
 	</div>
 </section>
 
 <section class="section">
 	<div class="container">
-		<div class="section-head">
-			<div>
-				<p class="eyebrow">Who we work with</p>
-				<h2 class="section-title">Built for businesses where the map decides</h2>
-			</div>
+		<?php pmc_heading( 'Picture this', 'A business customers *choose before they call.*', 'Most of your next customers will decide in under a minute, on a phone, from a short list. Here’s what that minute looks like when the short list is you.' ); ?>
+		<div class="futures-row">
+			<?php foreach ( pmc_futures() as $i => $f ) : ?>
+				<article class="future-card" data-reveal style="--r:<?php echo (int) $i; ?>">
+					<span class="future-num"><?php echo esc_html( str_pad( $i + 1, 2, '0', STR_PAD_LEFT ) ); ?></span>
+					<h3><?php echo esc_html( $f[0] ); ?></h3>
+					<p><?php echo esc_html( $f[1] ); ?></p>
+				</article>
+			<?php endforeach; ?>
 		</div>
-		<?php get_template_part( 'template-parts/industries-grid' ); ?>
 	</div>
 </section>
 
-<section class="section section-navy">
+<section class="section section-dark" id="proof">
 	<div class="container">
-		<div class="section-head">
-			<div>
-				<p class="eyebrow eyebrow-light">Case studies</p>
-				<h2 class="section-title">Real grids. Real rankings.</h2>
-			</div>
-			<a class="link-arrow link-light" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">All case studies <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
+		<div class="sec-head-row">
+			<?php pmc_heading( 'The future, already real', 'Watch the map *turn green.*', 'These are real client reports. Each dot is a point in their market: red means invisible, green means top three. Drag the slider.' ); ?>
+			<a class="link-arrow" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>" data-reveal>All results <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
 		</div>
 		<div class="case-grid">
-			<?php foreach ( $cases as $slug => $cs ) : ?>
+			<?php foreach ( pmc_case_studies() as $slug => $cs ) : ?>
 				<?php get_template_part( 'template-parts/case-card', null, array( 'slug' => $slug, 'cs' => $cs ) ); ?>
 			<?php endforeach; ?>
 		</div>
 	</div>
 </section>
 
+<section class="section section-paper">
+	<div class="container split split-center">
+		<?php pmc_heading( 'The next front door', 'Tomorrow’s customers ask AI. *It should name you.*', 'More people now ask ChatGPT, Gemini, or Google’s AI Overview who to call. Those answers come from your map listing, your reviews, and your website. In your future, all three point to you.' ); ?>
+		<?php get_template_part( 'template-parts/ai-answer' ); ?>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<?php pmc_heading( 'Your industry, your future', 'What *winning* looks like for you.' ); ?>
+		<?php get_template_part( 'template-parts/industries-grid' ); ?>
+	</div>
+</section>
+
 <?php get_template_part( 'template-parts/testimonial' ); ?>
 
-<section class="section section-soft">
-	<div class="container program">
-		<div>
-			<p class="eyebrow">For veterinary clinics</p>
-			<h2 class="section-title">Growth360™ for Veterinary Clinics</h2>
-			<p class="lead-sm">Our veterinary program combines PMC Driveby, PMC Reputation Shield™, and monthly executive reporting. It starts with a complimentary seven-day Executive Evaluation™, with no consultation call and no sales presentation.</p>
-		</div>
-		<a class="btn btn-primary btn-lg" href="<?php echo esc_url( home_url( '/growth360/' ) ); ?>">Explore Growth360™ <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
+<section class="section section-paper">
+	<div class="container">
+		<?php pmc_heading( 'How we get you there', 'Three services. *One outcome.*' ); ?>
+		<?php get_template_part( 'template-parts/services-grid' ); ?>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<?php pmc_heading( 'The path', 'From today to *the obvious choice.*' ); ?>
+		<?php get_template_part( 'template-parts/process' ); ?>
 	</div>
 </section>
 

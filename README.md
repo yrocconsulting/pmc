@@ -1,101 +1,95 @@
 # Progressive Marketing Concepts website
 
-Custom WordPress theme for [progressivemarketing.pro](https://progressivemarketing.pro): PMC Driveby, Google Maps ranking for medical clinics, auto dealerships, hotels, and veterinary clinics.
+High-end custom WordPress theme for Progressive Marketing Concepts.
+
+- **Staging:** https://pmc.yroc.host (SiteGround), auto-deployed from GitHub
+- **Production:** progressivemarketing.pro (cPanel), manual deploy once hosting is sorted
 
 ```
-wp-content/themes/progressive-marketing/   ← the theme (deployed to cPanel)
-.github/workflows/deploy.yml               ← auto-deploy on push to main
+wp-content/themes/progressive-marketing/    the theme
+.github/workflows/deploy-staging.yml        auto-deploy to SiteGround staging
+.github/workflows/deploy-cpanel.yml         manual deploy to cPanel production
 ```
+
+## Messaging rule
+
+About **85% the client's future, 15% our services.** Lead with what the business owner's life looks like after working with us (found first, trusted on sight, chosen again and again). Services appear as "how we get you there." Every number on the site comes from a real client report; illustrations are labeled as illustrations.
 
 ## Pages
 
-Activating the theme creates these pages (it never overwrites existing ones), sets Home as the front page, builds the Primary and Footer menus, and turns on `/%postname%/` permalinks.
+Activating the theme creates every page, the menus, a static front page, and `/%postname%/` permalinks. It never overwrites existing pages.
 
-| URL | Template |
+| URL | What it is |
 | --- | --- |
-| `/` | `front-page.php` |
-| `/driveby/` | `page-driveby.php` |
-| `/industries/` | `page-industries.php` |
-| `/industries/medical-clinics/`, `/auto-dealerships/`, `/hotels/`, `/veterinary-clinics/` | `template-parts/industry.php` (via `page.php`) |
-| `/case-studies/` | `page-case-studies.php` |
-| `/about-us/` | `page-about-us.php` |
-| `/contact-us/` | `page-contact-us.php` (HighLevel form) |
-| `/growth360/` | `page-growth360.php` (moved from vet.progressivemarketing.pro) |
-
-`/case-studies/`, `/about-us/`, and `/contact-us/` keep the same URLs as the old site. `/home-page/` redirects to `/`.
+| `/` | Home: the future, proof, AI answer demo, industries, services, FAQ |
+| `/services/` | Services hub |
+| `/services/driveby-review-guard/`, `/services/ripple/`, `/services/website-builds/` | The three services |
+| `/industries/` + `/industries/{medical-clinics, auto-dealerships, hotels, veterinary-clinics}/` | Industry futures |
+| `/growth360/` + `/growth360/{veterinary, automotive}/` | Growth360 editions (from vet. and danm. landing pages) |
+| `/case-studies/` | Results with drag-to-compare before/after map grids |
+| `/about-us/`, `/contact-us/` | About, contact |
+| `/llms.txt` | Plain-language summary of the business for AI assistants |
 
 ## Editing content
 
-- **Copy, case studies, industries, FAQs, testimonials:** `inc/content.php`. To add a case study, add an entry there and put its before/after grid images in `assets/img/`.
-- **Phone, email, trial button URL, top bar text, where signups go:** WordPress admin → Appearance → Customize → Progressive Marketing.
-- **Logo:** Appearance → Customize → Site Identity (falls back to `assets/img/logo.png`).
+All copy lives in `wp-content/themes/progressive-marketing/inc/content.php`: services, industries, Growth360 editions, case studies, FAQs, testimonials.
 
-## HighLevel: forms and payments
+**Draft copy:** Ripple and Website Builds are marked `'draft' => true`. Logged-in editors see a yellow "Draft copy" badge and `[Draft …]` notes; visitors don't. Replace the text and set `'draft' => false`.
 
-WordPress runs the website. HighLevel handles forms, the trial checkout and the CRM. Set these in **Appearance → Customize → Progressive Marketing**:
+Phone, email, trial button link, HighLevel form ID, and Growth360 evaluation links: **Appearance → Customize → Progressive Marketing**.
 
-| Setting | What it does | Default |
-| --- | --- | --- |
-| Free trial button URL | Every "Start free trial" button (header, top bar, CTAs) | `https://vet.progressivemarketing.pro/trial-form` (the existing HighLevel order form) |
-| HighLevel form ID or link | Form shown on `/contact-us/` | blank |
-| Growth360 evaluation URL | "Start my Executive Evaluation" buttons on `/growth360/` | the same HighLevel order form |
-| Growth360 video URL | Overview video on `/growth360/` | the existing HighLevel-hosted MP4 |
+## AI search optimization
 
-For the form ID: in HighLevel go to **Sites → Forms → Builder**, open the form, click **Integrate**, and copy either the form ID or the link that contains `/widget/form/…`. Either works.
+- JSON-LD structured data on every page: ProfessionalService (with offer catalog), WebSite, Service, BreadcrumbList, FAQPage.
+- `/llms.txt` generated from the same content, so it never drifts from the site.
+- `robots.txt` explicitly allows AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended and others) on production.
+- Staging (`*.yroc.host`) is automatically `noindex` and blocked in robots.txt. Production becomes indexable on its own once the site moves to progressivemarketing.pro.
+- If Yoast, Rank Math, or AIOSEO is installed, the theme stops printing its own meta tags and defers to the plugin.
 
-You can also drop HighLevel forms or booking calendars into any WordPress page or post with shortcodes:
+## HighLevel
 
-```
-[ghl_form id="FORM_ID"]
-[ghl_calendar id="CALENDAR_ID"]
-```
+WordPress runs the site. HighLevel handles forms, the trial checkout, and the CRM.
 
-### Backup form
+- "Start free trial" / "See your future" buttons go to the HighLevel trial order form (Customizer).
+- Contact page embeds a HighLevel form when you paste its form ID in the Customizer.
+- Shortcodes for any page: `[ghl_form id="FORM_ID"]` and `[ghl_calendar id="CALENDAR_ID"]`.
 
-If the trial URL and the HighLevel form are both blank, the Contact page falls back to a built-in form. It saves signups under **Dashboard → Trial Signups**, emails them, and can POST them to a HighLevel inbound webhook. You normally won't need it.
+## Deploying to SiteGround staging
 
-### Domains
+Every push to `main` or `claude/modest-sagan-6ge40q` that touches the theme lints the PHP and syncs the theme to staging over SSH with rsync. You can also run it from **Actions → Deploy theme to SiteGround staging → Run workflow**.
 
-HighLevel's order form needs a domain connected to HighLevel. Recommended setup:
+### One-time setup
 
-1. In HighLevel, connect a subdomain such as `go.progressivemarketing.pro` and move the trial order form funnel onto it. Update the two trial URLs in the Customizer to the new address.
-2. Point `progressivemarketing.pro` and `www` (A record) to the cPanel server.
-3. Once nothing uses `vet.progressivemarketing.pro`, point it to cPanel as well and redirect it to `https://progressivemarketing.pro/growth360/` (cPanel → Domains → Redirects), so old links keep working.
+1. **Create an SSH key** on your computer (no passphrase, so GitHub can use it):
 
-Until step 1 is done, leave `vet.progressivemarketing.pro` on HighLevel: the trial buttons point to its `/trial-form` page.
+   ```bash
+   ssh-keygen -t ed25519 -N "" -C "github-deploy-pmc" -f pmc_deploy
+   ```
 
-## Deployment (GitHub Actions → cPanel)
+2. **Add the public key to SiteGround:** Site Tools for pmc.yroc.host → **Devs → SSH Keys Manager → Import**. Paste the contents of `pmc_deploy.pub`.
+3. **Find the SSH details** on the same page under **Manage → SSH Credentials**: hostname, username, and port (usually 18765).
+4. **Add GitHub secrets** in yrocconsulting/pmc → Settings → Secrets and variables → Actions:
 
-Every push to `main` that changes the theme lints the PHP and uploads the theme over FTPS. You can also run it by hand from **Actions → Deploy theme to cPanel → Run workflow**. Only changed files are uploaded.
+   | Secret | Value |
+   | --- | --- |
+   | `SITEGROUND_SSH_HOST` | SSH hostname from step 3, e.g. `ssh.yroc.host` or `gvam1234.siteground.biz` |
+   | `SITEGROUND_SSH_USER` | SSH username from step 3, e.g. `u123-abcdefgh` |
+   | `SITEGROUND_SSH_KEY` | Full contents of the private key file `pmc_deploy` (including the BEGIN/END lines) |
 
-### Repository secrets
+   Optional **variables** (Variables tab), only if yours differ:
 
-Add these under **Settings → Secrets and variables → Actions → New repository secret**:
+   | Variable | Default |
+   | --- | --- |
+   | `SITEGROUND_SSH_PORT` | `18765` |
+   | `SITEGROUND_THEME_DIR` | `www/pmc.yroc.host/public_html/wp-content/themes/progressive-marketing/` |
 
-| Secret | Value |
-| --- | --- |
-| `CPANEL_FTP_SERVER` | FTP host, e.g. `ftp.progressivemarketing.pro` (cPanel → FTP Accounts → Configure FTP Client) |
-| `CPANEL_FTP_USERNAME` | Full FTP username, e.g. `deploy@progressivemarketing.pro` |
-| `CPANEL_FTP_PASSWORD` | That FTP account's password |
+5. **Install WordPress** on pmc.yroc.host (Site Tools → WordPress → Install & Manage), run the workflow once, then activate **Progressive Marketing Concepts** under Appearance → Themes.
 
-Optional **variable** (Variables tab, not Secrets):
+Delete the local `pmc_deploy` files once the secret is saved, or keep them somewhere safe.
 
-| Variable | Default |
-| --- | --- |
-| `CPANEL_THEME_DIR` | `public_html/wp-content/themes/progressive-marketing/` |
+## Moving to production later
 
-`CPANEL_THEME_DIR` is the path from the FTP account's home folder to the theme folder, ending in `/`. With the default, the FTP account's home must be your cPanel home directory (the main cPanel account works). With a dedicated FTP account whose directory is `public_html`, set it to `wp-content/themes/progressive-marketing/`. If WordPress is installed in a subfolder or an addon domain's folder, adjust the path to match.
-
-### Recommended: a dedicated deploy FTP account
-
-In cPanel → **FTP Accounts**, create `deploy@progressivemarketing.pro` with directory `public_html/wp-content/themes/progressive-marketing`, then set `CPANEL_THEME_DIR` to `./`. That account can only touch the theme folder.
-
-### First deploy
-
-1. Install WordPress on cPanel (Softaculous / WordPress Manager) for progressivemarketing.pro.
-2. Add the secrets above and merge to `main` (or run the workflow manually).
-3. In WordPress admin → Appearance → Themes, activate **Progressive Marketing Concepts**.
-4. Open Appearance → Customize → Progressive Marketing and check the phone, email, and signup settings.
+Copy the site with SiteGround's migrator or a plugin like Duplicator/All-in-One WP Migration, or install WordPress on cPanel, activate the theme, and run **Deploy theme to cPanel (production)** with the `CPANEL_FTP_*` secrets (see the workflow file). Then update the Customizer settings and point DNS.
 
 ## Local check
 

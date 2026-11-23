@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PMC_VERSION', '1.1.0' );
+define( 'PMC_VERSION', '2.0.0' );
 define( 'PMC_DIR', get_template_directory() );
 define( 'PMC_URI', get_template_directory_uri() );
 
@@ -43,7 +43,7 @@ add_action( 'after_setup_theme', 'pmc_setup' );
  * Styles and scripts.
  */
 function pmc_assets() {
-	wp_enqueue_style( 'pmc-fonts', 'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap', array(), null );
+	wp_enqueue_style( 'pmc-fonts', 'https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null );
 	wp_enqueue_style( 'pmc-style', get_stylesheet_uri(), array( 'pmc-fonts' ), PMC_VERSION );
 	wp_enqueue_script( 'pmc-main', PMC_URI . '/assets/js/main.js', array(), PMC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
 }
@@ -66,15 +66,15 @@ add_filter( 'wp_resource_hints', 'pmc_resource_hints', 10, 2 );
  */
 function pmc_fallback_menu() {
 	$items = array(
-		'driveby'       => 'Driveby',
-		'industries'    => 'Industries',
-		'case-studies'  => 'Case Studies',
-		'about-us'      => 'About',
-		'contact-us'    => 'Contact',
+		'services/'     => 'Services',
+		'industries/'   => 'Industries',
+		'case-studies/' => 'Results',
+		'about-us/'     => 'About',
+		'contact-us/'   => 'Contact',
 	);
 	echo '<ul class="menu">';
-	foreach ( $items as $slug => $label ) {
-		printf( '<li><a href="%s">%s</a></li>', esc_url( home_url( '/' . $slug . '/' ) ), esc_html( $label ) );
+	foreach ( $items as $path => $label ) {
+		printf( '<li><a href="%s">%s</a></li>', esc_url( home_url( '/' . $path ) ), esc_html( $label ) );
 	}
 	echo '</ul>';
 }
@@ -90,7 +90,7 @@ function pmc_legacy_redirects() {
 	$map  = array(
 		'home-page' => '/',
 		'home'      => '/',
-		'services'  => '/driveby/',
+		'driveby'   => '/services/driveby-review-guard/',
 		'trial'     => '/contact-us/#trial',
 	);
 	if ( isset( $map[ $path ] ) ) {
@@ -99,3 +99,11 @@ function pmc_legacy_redirects() {
 	}
 }
 add_action( 'template_redirect', 'pmc_legacy_redirects' );
+
+/**
+ * Mark JS as available before first paint (enables reveal animations without a flash).
+ */
+function pmc_js_flag() {
+	echo "<script>document.documentElement.className+=' js';</script>\n";
+}
+add_action( 'wp_head', 'pmc_js_flag', 0 );

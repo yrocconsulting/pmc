@@ -1,0 +1,66 @@
+name: Deploy theme to SiteGround staging
+
+# Syncs the theme to the staging WordPress site (pmc.yroc.host) on SiteGround over SSH.
+# Runs on every push to main or the working branch that touches the theme,
+# or manually from the Actions tab.
+on:
+  push:
+    branches:
+      - main
+      - claude/modest-sagan-6ge40q
+    paths:
+      - 'wp-content/themes/progressive-marketing/**'
+      - '.github/workflows/deploy-staging.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SSH_HOST: ${{ secrets.SITEGROUND_SSH_HOST }}
+      SSH_USER: ${{ secrets.SITEGROUND_SSH_USER }}
+      SSH_PORT: ${{ vars.SITEGROUND_SSH_PORT || '18765' }}
+      THEME_DIR: ${{ vars.SITEGROUND_THEME_DIR || 'www/pmc.yroc.host/public_html/wp-content/themes/progressive-marketing/' }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Lint PHP
+        run: |
+          for f in $(find wp-content/themes/progressive-marketing -name '*.php'); do
+            php -l "$f" > /dev/null || exit 1
+          done
+
+      - name: Check secrets are set
+        run: |
+          missing=0
+          for v in SSH_HOST SSH_USER; do
+            if [ -z "${!v}" ]; then echo "::error::Missing secret for $v"; missing=1; fi
+          done
+          if [ -z "${{ secrets.SITEGROUND_SSH_KEY }}" ]; then echo "::error::Missing secret SITEGROUND_SSH_KEY"; missing=1; fi
+          exit $missing
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "${{ secrets.SITEGROUND_SSH_KEY }}" > ~/.ssh/siteground
+          chmod 600 ~/.ssh/siteground
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Sync theme
+        run: |
+          ssh -i ~/.ssh/siteground -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "mkdir -p '$THEME_DIR'"
+          rsync -az --delete --exclude '.git*' --exclude '.DS_Store' \
+            -e "ssh -i $HOME/.ssh/siteground -p $SSH_PORT" \
+            wp-content/themes/progressive-marketing/ \
+            "$SSH_USER@$SSH_HOST:$THEME_DIR"
+
+      - name: Flush SiteGround cache
+        continue-on-error: true
+        run: |
+          ssh -i ~/.ssh/siteground -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+            "cd '${THEME_DIR%/wp-content/themes/progressive-marketing/}' && wp sg purge 2>/dev/null || wp cache flush 2>/dev/null || true"
