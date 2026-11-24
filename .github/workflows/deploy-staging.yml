@@ -36,31 +36,47 @@ jobs:
           done
 
       - name: Check secrets are set
+        env:
+          HAS_KEY: ${{ secrets.SITEGROUND_SSH_KEY != '' }}
         run: |
           missing=0
           for v in SSH_HOST SSH_USER; do
             if [ -z "${!v}" ]; then echo "::error::Missing secret for $v"; missing=1; fi
           done
-          if [ -z "${{ secrets.SITEGROUND_SSH_KEY }}" ]; then echo "::error::Missing secret SITEGROUND_SSH_KEY"; missing=1; fi
+          if [ "$HAS_KEY" != "true" ]; then echo "::error::Missing secret SITEGROUND_SSH_KEY"; missing=1; fi
           exit $missing
 
       - name: Set up SSH key
+        env:
+          SSH_KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
+          SSH_PASSPHRASE: ${{ secrets.SITEGROUND_SSH_PASSPHRASE }}
         run: |
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
-          printf '%s\n' "${{ secrets.SITEGROUND_SSH_KEY }}" > ~/.ssh/siteground
+          # Normalize line endings in case the key was pasted from Windows.
+          printf '%s\n' "$SSH_KEY" | tr -d '\r' > ~/.ssh/siteground
           chmod 600 ~/.ssh/siteground
+          # SiteGround-generated keys have a passphrase: remove it on the runner copy.
+          if [ -n "$SSH_PASSPHRASE" ]; then
+            ssh-keygen -p -P "$SSH_PASSPHRASE" -N "" -f ~/.ssh/siteground > /dev/null
+          fi
+          if ! ssh-keygen -y -P "" -f ~/.ssh/siteground > ~/.ssh/siteground.pub 2>/dev/null; then
+            echo "::error::SITEGROUND_SSH_KEY is not a usable private key, or it has a passphrase. Add the passphrase as the SITEGROUND_SSH_PASSPHRASE secret, or use a key created without one."
+            exit 1
+          fi
+          echo "Deploy key fingerprint (compare with the key in SiteGround's SSH Keys Manager):"
+          ssh-keygen -lf ~/.ssh/siteground.pub
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
       - name: Sync theme
         run: |
-          ssh -i ~/.ssh/siteground -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "mkdir -p '$THEME_DIR'"
+          ssh -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/siteground -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "mkdir -p '$THEME_DIR'"
           rsync -az --delete --exclude '.git*' --exclude '.DS_Store' \
-            -e "ssh -i $HOME/.ssh/siteground -p $SSH_PORT" \
+            -e "ssh -o BatchMode=yes -o IdentitiesOnly=yes -i $HOME/.ssh/siteground -p $SSH_PORT" \
             wp-content/themes/progressive-marketing/ \
             "$SSH_USER@$SSH_HOST:$THEME_DIR"
 
       - name: Flush SiteGround cache
         continue-on-error: true
         run: |
-          ssh -i ~/.ssh/siteground -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
+          ssh -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/siteground -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
             "cd '${THEME_DIR%/wp-content/themes/progressive-marketing/}' && wp sg purge 2>/dev/null || wp cache flush 2>/dev/null || true"
