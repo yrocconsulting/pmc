@@ -13,7 +13,7 @@ $tiles = array(
 	array( 'shield', 'Reviews', 'One fake review from a bad month', 'Fake reviews reported within 30 minutes', 40, 90, 'mint' ),
 	array( 'ripple', 'Word of mouth', 'Whoever happens to remember you', 'Customers sharing your offer with friends', 22, 86, 'peach' ),
 	array( 'browser', 'Your website', 'An online brochure', 'Booking appointments while you sleep', 30, 88, 'lilac' ),
-	array( 'ai', 'AI assistants', 'Don’t mention you', 'Recommend you by name', 8, 82, 'sky' ),
+	array( 'calendar', 'Your schedule', 'Gaps you hope will fill', 'Booked with the customers you want', 25, 90, 'sky' ),
 );
 ?>
 <div class="ft" data-future-toggle>

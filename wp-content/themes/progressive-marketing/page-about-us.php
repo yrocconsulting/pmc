@@ -20,7 +20,7 @@ get_header();
 		<?php pmc_heading( 'What we believe', 'Your future shouldn’t *depend on luck.*' ); ?>
 		<div class="prose" data-reveal>
 			<p>Most local businesses are better than their online presence suggests. Customers can’t see the care, the expertise, or the years of reputation. They see a map, a star rating, and a website, and they decide in seconds.</p>
-			<p>We close that gap. Our work raises your presence across Google Maps, local search, and AI platforms so the right customers find you first, and our reporting shows you exactly what changed and why.</p>
+			<p>We close that gap. Our work raises your presence across Google Maps and local search so the right customers find you first, and our reporting shows you exactly what changed and why.</p>
 		</div>
 	</div>
 </section>

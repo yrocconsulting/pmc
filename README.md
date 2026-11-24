@@ -21,7 +21,7 @@ Activating the theme creates every page, the menus, a static front page, and `/%
 
 | URL | What it is |
 | --- | --- |
-| `/` | Home: the future, proof, AI answer demo, industries, services, FAQ |
+| `/` | Home: the future, proof, industries, services, FAQ |
 | `/services/` | Services hub |
 | `/services/driveby-review-guard/`, `/services/ripple/`, `/services/website-builds/` | The three services |
 | `/industries/` + `/industries/{medical-clinics, auto-dealerships, hotels, veterinary-clinics}/` | Industry futures |

@@ -76,23 +76,23 @@ function pmc_services() {
 			'name'     => 'Website Builds',
 			'tagline'  => 'A website that closes.',
 			'icon'     => 'browser',
-			'future'   => 'Visitors land on a site that feels unmistakably yours, answers their questions, earns their trust, and turns them into booked appointments, and AI assistants can read it and recommend you.',
-			'summary'  => 'Every website we build is custom: designed from scratch around your brand, your market, and the customers you want more of. No templates, no two alike. Each one is built to convert the attention Driveby and Ripple create, and structured so search engines and AI assistants understand exactly what you do.',
+			'future'   => 'Visitors land on a site that feels unmistakably yours, answers their questions, earns their trust, and turns them into booked appointments.',
+			'summary'  => 'Every website we build is custom: designed from scratch around your brand, your market, and the customers you want more of. No templates, no two alike. Each one is built to convert the attention Driveby and Ripple create, and structured so search engines understand exactly what you do and where you do it.',
 			'parts'    => array(
 				array( 'Custom from the first sketch', 'Designed around your brand and your customers, never a recycled theme.' ),
 				array( 'Built to convert', 'Clear offers, real proof, and one obvious next step on every page.' ),
-				array( 'Built for AI search', 'Structured data, clean semantic pages, and answers written the way people ask questions, so ChatGPT, Gemini, and Google’s AI Overviews can cite you.' ),
+				array( 'Built to be found', 'Clean, fast pages with structured data, so search engines understand exactly what you do and where you do it.' ),
 				array( 'Built to last', 'Fast, secure, mobile-first, and easy for your team to update.' ),
 			),
 			'steps'    => array(
 				array( 'Discover', 'We learn your business, your market, and who you want more of.' ),
 				array( 'Design', 'A custom design shaped around your brand, reviewed with you.' ),
-				array( 'Build', 'Fast, accessible, and structured for search engines and AI.' ),
+				array( 'Build', 'Fast, accessible, mobile-first, and structured for search engines.' ),
 				array( 'Launch', 'Go live, connect it to your visibility and reputation work, and keep improving.' ),
 			),
 			'outcomes' => array(
 				'Your website becomes your best salesperson, working every hour of the day.',
-				'AI assistants describe your business accurately and send customers your way.',
+				'Customers get their questions answered and book without picking up the phone.',
 				'Every dollar you spend on visibility lands somewhere that converts.',
 			),
 			'draft'    => false,
@@ -105,7 +105,7 @@ function pmc_services() {
  */
 function pmc_futures() {
 	return array(
-		array( 'Found first', 'When someone nearby needs what you do, your name is at the top of the map, in the AI answer, and in the conversation.' ),
+		array( 'Found first', 'When someone nearby needs what you do, your name is at the top of the map and in the conversation.' ),
 		array( 'Trusted on sight', 'Your reviews, your profile, and your website all say the same thing: this is the safe choice.' ),
 		array( 'Chosen, again and again', 'The phone rings with the right customers. Appointments book themselves. Growth stops depending on luck.' ),
 	);
@@ -120,7 +120,7 @@ function pmc_future_day() {
 		array( '7:42 AM', 'call', 'New call from Google Maps', '“Saw you were top-rated. Do you have anything today?”' ),
 		array( '9:15 AM', 'star', 'New 5-star review', '“Found them on the map, booked in two minutes.”' ),
 		array( '11:03 AM', 'calendar', 'Appointment booked online', 'From your website, after reading your FAQ.' ),
-		array( '1:30 PM', 'ai', 'Recommended by an AI assistant', '“Top choice nearby, known for fast service and great reviews.”' ),
+		array( '1:30 PM', 'pin', 'Top 3 across town', 'Your weekly map report: top three from one side of town to the other.' ),
 		array( '3:48 PM', 'shield', 'Fake review reported', 'A competitor’s 1-star review flagged for removal within 30 minutes.' ),
 		array( '5:20 PM', 'ripple', 'Your campaign is spreading', 'Customers shared your offer, and their friends are sharing it too.' ),
 	);
@@ -307,12 +307,12 @@ function pmc_growth360_editions() {
 }
 
 /**
- * FAQs, written as the questions people (and AI assistants) actually ask.
+ * FAQs, written as the questions people actually ask.
  * Output as FAQPage structured data wherever they appear.
  */
 function pmc_faqs() {
 	return array(
-		array( 'What does Progressive Marketing Concepts do?', 'We help established local businesses become the obvious choice in their market. Our three services are PMC Driveby™ & Review Guard™ (top-three Google Maps visibility, with fast removal reporting for fake or abusive reviews included), Ripple (sharing campaigns that turn your existing media into earned media), and custom websites built for AI search.' ),
+		array( 'What does Progressive Marketing Concepts do?', 'We help established local businesses become the obvious choice in their market. Our three services are PMC Driveby™ & Review Guard™ (top-three Google Maps visibility, with fast removal reporting for fake or abusive reviews included), Ripple (sharing campaigns that turn your existing media into earned media), and custom websites built to turn visitors into customers.' ),
 		array( 'What is PMC Driveby?', 'PMC Driveby is a location-based ranking system for Google Business Profiles. It moves your business into the top three on Google Maps for the keywords your customers search, across your whole service area, and keeps monitoring it there.' ),
 		array( 'What is PMC Review Guard?', 'Review Guard is included with every PMC Driveby plan. It monitors your Google reviews around the clock. New 1- and 2-star reviews that appear fake, spammy, abusive, off-topic, or from competitors or non-customers are typically reported within 30 minutes, then escalated and tracked. No login to your Google account is required.' ),
 		array( 'Can every negative review be removed?', 'No. Google makes the final decision, and genuine reviews that follow its policies stay up. Review Guard makes sure the ones that break the rules are reported fast and followed through.' ),
@@ -320,7 +320,7 @@ function pmc_faqs() {
 		array( 'How fast will I see results?', 'Our Driveby optimization runs 30 to 45 days, and many clients see movement sooner. One wellness center moved from position 13 to 5 for a key service in seven days.' ),
 		array( 'How do I know it’s working?', 'Every keyword gets a before-and-after geo-grid report showing your average ranking position (ARP) and share of local voice (SOLV, the share of the map where you rank in the top three), plus monthly executive reporting.' ),
 		array( 'Is there a way to try it first?', 'Yes. You can start a free 7-day PMC Driveby trial, or a complimentary Growth360™ Executive Evaluation for veterinary clinics and dealerships. There’s no sales presentation.' ),
-		array( 'Do you build websites that work with AI search?', 'Yes. Our websites use structured data, clean semantic pages, and plain-language answers so search engines and AI assistants like ChatGPT, Gemini, and Google AI Overviews can understand and recommend your business.' ),
+		array( 'What’s included in a website build?', 'Every site is designed from scratch around your brand and the customers you want more of. It loads fast, works beautifully on phones, turns visitors into calls and bookings, and gives search engines clear, structured information about your business.' ),
 		array( 'Which businesses do you work with?', 'Established local businesses, especially medical clinics, auto dealerships, hotels, and veterinary clinics. You need a public Google Business Profile and a commitment to your local market.' ),
 	);
 }

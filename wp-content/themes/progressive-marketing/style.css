@@ -229,8 +229,8 @@ p { margin: 0 0 1em; }
 .chip-review { flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px 18px; }
 .chip-rank { top: 12%; left: -48px; }
 .chip-review { bottom: 22%; left: -64px; animation-delay: -2.3s; }
-.chip-ai { top: 40%; right: -8px; animation-delay: -4.6s; }
-.chip-ai .chip-icon { background: var(--blue); }
+.chip-share { top: 40%; right: -8px; animation-delay: -4.6s; }
+.chip-share .chip-icon { background: var(--blue); }
 @keyframes chipFloat { 50% { transform: translateY(-8px); } }
 .hero-photo-split + .container .ft { margin-top: clamp(48px, 6vw, 80px); }
 @media (max-width: 960px) {
@@ -238,11 +238,11 @@ p { margin: 0 0 1em; }
 	.hero-photo { max-width: 460px; margin: 8px auto 0; }
 	.chip-rank { left: -8px; top: -18px; }
 	.chip-review { left: -12px; }
-	.chip-ai { right: 0; }
+	.chip-share { right: 0; }
 }
 @media (max-width: 480px) {
 	.hero-chip { transform: scale(.9); }
-	.chip-ai { display: none; }
+	.chip-share { display: none; }
 }
 
 /* Today ↔ Future switch */

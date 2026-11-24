@@ -56,15 +56,6 @@ $svc  = $args['svc'];
 	</div>
 </section>
 
-<?php if ( 'website-builds' === $slug ) : ?>
-<section class="section section-paper">
-	<div class="container split">
-		<?php pmc_heading( 'Built for AI search', 'When someone asks an AI, *it names you.*', 'People now ask ChatGPT, Gemini, and Google’s AI Overviews who to call. Those answers come from your listing, your reviews, and a website machines can read.' ); ?>
-		<?php get_template_part( 'template-parts/ai-answer' ); ?>
-	</div>
-</section>
-<?php endif; ?>
-
 <section class="section section-paper">
 	<div class="container split">
 		<div data-reveal>

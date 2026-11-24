@@ -55,7 +55,7 @@ function pmc_page_context() {
  */
 function pmc_meta_description() {
 	if ( is_front_page() ) {
-		return 'Progressive Marketing Concepts helps established local businesses become the obvious choice: top of Google Maps, protected reviews, momentum that spreads, and websites built for AI search.';
+		return 'Progressive Marketing Concepts helps established local businesses become the obvious choice: top of Google Maps, protected reviews, momentum that spreads, and custom websites that convert.';
 	}
 	list( $type, $key ) = pmc_page_context();
 	if ( 'service' === $type ) {
@@ -148,7 +148,7 @@ function pmc_structured_data() {
 			'description' => 'Progressive Marketing Concepts helps established local businesses become the obvious choice in their market with PMC Driveby & Review Guard, Ripple, and high-end website builds.',
 			'areaServed'  => 'United States',
 			'address'     => array( '@type' => 'PostalAddress', 'addressLocality' => 'Dallas', 'addressRegion' => 'TX', 'addressCountry' => 'US' ),
-			'knowsAbout'  => array( 'Google Business Profile optimization', 'Local SEO', 'Google Maps ranking', 'Online reputation management', 'AI search optimization', 'Website design' ),
+			'knowsAbout'  => array( 'Google Business Profile optimization', 'Local SEO', 'Google Maps ranking', 'Online reputation management', 'Referral and sharing campaigns', 'Website design' ),
 			'founder'     => array( '@type' => 'Person', 'name' => pmc_opt( 'rep_name' ) ),
 			'hasOfferCatalog' => array(
 				'@type'           => 'OfferCatalog',
@@ -234,7 +234,7 @@ function pmc_llms_txt( $wp ) {
 	$lines   = array();
 	$lines[] = '# Progressive Marketing Concepts';
 	$lines[] = '';
-	$lines[] = '> Progressive Marketing Concepts (PMC) helps established local businesses become the obvious choice in their market: found first on Google Maps and in AI answers, trusted on sight, and chosen again and again. Based in Dallas–Fort Worth, Texas; serves businesses across the United States.';
+	$lines[] = '> Progressive Marketing Concepts (PMC) helps established local businesses become the obvious choice in their market: found first on Google Maps, trusted on sight, and chosen again and again. Based in Dallas–Fort Worth, Texas; serves businesses across the United States.';
 	$lines[] = '';
 	$lines[] = 'Contact: ' . pmc_opt( 'phone' ) . ' · ' . pmc_opt( 'email' );
 	$lines[] = '';

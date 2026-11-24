@@ -20,7 +20,7 @@ foreach ( pmc_industries() as $ind ) {
 		<div class="hero-copy">
 			<p class="pill" data-reveal><span class="pill-dot"></span> For established local businesses</p>
 			<h1 data-reveal>Ninety days from now, you’re <em>the obvious choice.</em></h1>
-			<p class="lead" data-reveal>Your name at the top of the map. Reviews that sell for you. Customers spreading the word. A website that books the appointment, and AI assistants that recommend you by name.</p>
+			<p class="lead" data-reveal>Your name at the top of the map. Reviews that sell for you. Customers spreading the word. And a website that books the appointment while you sleep.</p>
 			<div class="hero-actions" data-reveal>
 				<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">See your future <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
 				<a class="btn btn-ghost btn-lg" href="#proof">See real results</a>
@@ -38,9 +38,9 @@ foreach ( pmc_industries() as $ind ) {
 				<span class="chip-stars"><?php echo str_repeat( pmc_icon( 'star' ), 5 ); // phpcs:ignore ?></span>
 				<span><strong>New 5-star review</strong><small>“Booked in two minutes.”</small></span>
 			</div>
-			<div class="hero-chip chip-ai" aria-hidden="true">
-				<span class="chip-icon"><?php echo pmc_icon( 'ai' ); // phpcs:ignore ?></span>
-				<span><strong>Recommended by AI</strong><small>“A top choice nearby.”</small></span>
+			<div class="hero-chip chip-share" aria-hidden="true">
+				<span class="chip-icon"><?php echo pmc_icon( 'ripple' ); // phpcs:ignore ?></span>
+				<span><strong>Shared by a customer</strong><small>“Sent this to my sister!”</small></span>
 			</div>
 		</figure>
 	</div>
@@ -106,12 +106,6 @@ foreach ( pmc_industries() as $ind ) {
 	</div>
 </section>
 
-<section class="section section-tint">
-	<div class="container split split-center">
-		<?php pmc_heading( 'The next front door', 'Tomorrow’s customers ask AI. *It should name you.*', 'More people now ask ChatGPT, Gemini, or Google’s AI Overview who to call. Those answers come from your map listing, your reviews, and your website. In your future, all three point to you.' ); ?>
-		<?php get_template_part( 'template-parts/ai-answer' ); ?>
-	</div>
-</section>
 
 <section class="section">
 	<div class="container">
