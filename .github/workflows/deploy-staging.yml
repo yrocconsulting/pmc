@@ -75,8 +75,39 @@ jobs:
             wp-content/themes/progressive-marketing/ \
             "$SSH_USER@$SSH_HOST:$THEME_DIR"
 
-      - name: Flush SiteGround cache
+      - name: Activate theme (first deploy only) and flush cache
+        run: |
+          WP_DIR="${THEME_DIR%/wp-content/themes/progressive-marketing/}"
+          ssh -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/siteground -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" bash -s -- "$WP_DIR" <<'REMOTE'
+          set -e
+          cd "$1"
+          if ! command -v wp >/dev/null 2>&1; then
+            echo "::warning::WP-CLI not found on the server; activate the theme in WordPress admin."
+            exit 0
+          fi
+          if ! wp core is-installed 2>/dev/null; then
+            echo "::warning::WordPress is not installed at $1 yet."
+            exit 0
+          fi
+          if [ "$(wp option get stylesheet)" != "progressive-marketing" ]; then
+            wp theme activate progressive-marketing
+            echo "Theme activated."
+          else
+            echo "Theme already active."
+          fi
+          # Create any missing pages/menus (never overwrites existing content).
+          wp eval 'if ( function_exists( "pmc_activate" ) ) { pmc_activate(); update_option( "pmc_setup_version", PMC_VERSION ); echo "Pages and menus checked.\n"; }'
+          wp rewrite flush --hard 2>/dev/null || wp rewrite flush
+          if [ "$(wp option get blogname)" = "My WordPress" ] || [ "$(wp option get blogname)" = "My Blog" ]; then
+            wp option update blogname "Progressive Marketing Concepts"
+          fi
+          wp sg purge 2>/dev/null || wp cache flush 2>/dev/null || true
+          REMOTE
+
+      - name: Warm up site (runs first-time page setup)
         continue-on-error: true
         run: |
-          ssh -o BatchMode=yes -o IdentitiesOnly=yes -i ~/.ssh/siteground -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" \
-            "cd '${THEME_DIR%/wp-content/themes/progressive-marketing/}' && wp sg purge 2>/dev/null || wp cache flush 2>/dev/null || true"
+          SITE="https://$(basename "${THEME_DIR%/public_html/wp-content/themes/progressive-marketing/}")"
+          curl -s -o /dev/null -w "Home: %{http_code}\n" "$SITE/"
+          curl -s -o /dev/null -w "llms.txt: %{http_code}\n" "$SITE/llms.txt"
+          curl -s -o /dev/null -w "Services: %{http_code}\n" "$SITE/services/"
