@@ -21,6 +21,8 @@ function pmc_defaults() {
 		'vet_eval_url'   => '',
 		'auto_eval_url'  => '',
 		'topbar_text'    => '',
+		'hero_image'     => '',
+		'hero_image_alt' => 'Smiling clinic owner in a white coat, arms crossed, in his practice',
 		'notify_email'   => '',
 		'webhook_url'    => '',
 		'thankyou_text'  => 'Thanks! Your PMC Driveby trial request is in. We’ll check your Google Business Profile and get back to you within one business day.',
@@ -71,6 +73,7 @@ function pmc_customize_register( $wp_customize ) {
 		'vet_eval_url'  => array( 'Growth360 Veterinary: Executive Evaluation URL (blank = current HighLevel form)', 'url', 'esc_url_raw' ),
 		'auto_eval_url' => array( 'Growth360 Automotive: Executive Evaluation URL (blank = current HighLevel form)', 'url', 'esc_url_raw' ),
 		'topbar_text'   => array( 'Top bar announcement (blank hides it)', 'text', 'sanitize_text_field' ),
+		'hero_image_alt' => array( 'Home hero image description (alt text)', 'text', 'sanitize_text_field' ),
 		'notify_email'  => array( 'Backup form only: send submissions to (blank = public email)', 'email', 'sanitize_email' ),
 		'webhook_url'   => array( 'Backup form only: forward submissions to webhook URL (HighLevel inbound webhook)', 'url', 'esc_url_raw' ),
 		'thankyou_text' => array( 'Backup form only: message shown after sending', 'textarea', 'sanitize_textarea_field' ),
@@ -96,3 +99,32 @@ function pmc_customize_register( $wp_customize ) {
 	}
 }
 add_action( 'customize_register', 'pmc_customize_register' );
+
+/**
+ * Home hero image control (Media Library picker).
+ *
+ * @param WP_Customize_Manager $wp_customize Manager.
+ */
+function pmc_customize_hero_image( $wp_customize ) {
+	$wp_customize->add_setting( 'pmc_hero_image', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'pmc_hero_image',
+			array(
+				'label'       => 'Home hero image',
+				'description' => 'Portrait photo, about 960 × 1200. Leave empty to use the built-in image.',
+				'section'     => 'pmc_options',
+			)
+		)
+	);
+}
+add_action( 'customize_register', 'pmc_customize_hero_image', 20 );
+
+/**
+ * URL of the home hero image.
+ */
+function pmc_hero_image() {
+	$url = pmc_opt( 'hero_image' );
+	return $url ? $url : pmc_img( 'hero-owner.jpg' );
+}

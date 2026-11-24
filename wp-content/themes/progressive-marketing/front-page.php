@@ -16,14 +16,35 @@ foreach ( pmc_industries() as $ind ) {
 
 <section class="hero">
 	<div class="hero-sun" aria-hidden="true"></div>
-	<div class="container hero-center">
-		<p class="pill" data-reveal><span class="pill-dot"></span> For established local businesses</p>
-		<h1 data-reveal>Ninety days from now, you’re <em>the obvious choice.</em></h1>
-		<p class="lead" data-reveal>Your name at the top of the map. Reviews that sell for you. Customers spreading the word. A website that books the appointment, and AI assistants that recommend you by name.</p>
-		<div class="hero-actions" data-reveal>
-			<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">See your future <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
-			<a class="btn btn-ghost btn-lg" href="#proof">See real results</a>
+	<div class="container hero-photo-split">
+		<div class="hero-copy">
+			<p class="pill" data-reveal><span class="pill-dot"></span> For established local businesses</p>
+			<h1 data-reveal>Ninety days from now, you’re <em>the obvious choice.</em></h1>
+			<p class="lead" data-reveal>Your name at the top of the map. Reviews that sell for you. Customers spreading the word. A website that books the appointment, and AI assistants that recommend you by name.</p>
+			<div class="hero-actions" data-reveal>
+				<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">See your future <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
+				<a class="btn btn-ghost btn-lg" href="#proof">See real results</a>
+			</div>
 		</div>
+		<figure class="hero-photo" data-reveal>
+			<div class="hero-photo-frame">
+				<img src="<?php echo esc_url( pmc_hero_image() ); ?>" width="960" height="1200" alt="<?php echo esc_attr( pmc_opt( 'hero_image_alt' ) ); ?>" fetchpriority="high">
+			</div>
+			<div class="hero-chip chip-rank" aria-hidden="true">
+				<span class="chip-icon"><?php echo pmc_icon( 'pin' ); // phpcs:ignore ?></span>
+				<span><strong>#1 on Google Maps</strong><small>“clinic near me”</small></span>
+			</div>
+			<div class="hero-chip chip-review" aria-hidden="true">
+				<span class="chip-stars"><?php echo str_repeat( pmc_icon( 'star' ), 5 ); // phpcs:ignore ?></span>
+				<span><strong>New 5-star review</strong><small>“Booked in two minutes.”</small></span>
+			</div>
+			<div class="hero-chip chip-ai" aria-hidden="true">
+				<span class="chip-icon"><?php echo pmc_icon( 'ai' ); // phpcs:ignore ?></span>
+				<span><strong>Recommended by AI</strong><small>“A top choice nearby.”</small></span>
+			</div>
+		</figure>
+	</div>
+	<div class="container">
 		<?php get_template_part( 'template-parts/future-toggle' ); ?>
 	</div>
 </section>

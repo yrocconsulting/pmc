@@ -91,6 +91,11 @@ Delete the local `pmc_deploy` files once the secret is saved, or keep them somew
 
 Copy the site with SiteGround's migrator or a plugin like Duplicator/All-in-One WP Migration, or install WordPress on cPanel, activate the theme, and run **Deploy theme to cPanel (production)** with the `CPANEL_FTP_*` secrets (see the workflow file). Then update the Customizer settings and point DNS.
 
+## Image credits
+
+- Home hero photo (`assets/img/hero-owner.jpg`): Vitaly Gariev on Unsplash, https://unsplash.com/photos/XqMo4OlBnh0, free under the Unsplash License. Replace it any time in Appearance → Customize → Progressive Marketing → Home hero image.
+- Case-study map grids: PMC client reports.
+
 ## Local check
 
 ```bash
