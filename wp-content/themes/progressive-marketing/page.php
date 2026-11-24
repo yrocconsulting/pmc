@@ -12,6 +12,9 @@ list( $pmc_type, $pmc_key ) = pmc_page_context();
 
 if ( 'service' === $pmc_type ) {
 	get_template_part( 'template-parts/service', null, array( 'slug' => $pmc_key, 'svc' => pmc_services()[ $pmc_key ] ) );
+} elseif ( 'subindustry' === $pmc_type ) {
+	list( $pmc_cat, $pmc_sub ) = explode( '/', $pmc_key );
+	get_template_part( 'template-parts/subindustry', null, array( 'cat' => $pmc_cat, 'cat_data' => pmc_industries()[ $pmc_cat ], 'ind' => pmc_subindustry( $pmc_cat, $pmc_sub ) ) );
 } elseif ( 'industry' === $pmc_type ) {
 	get_template_part( 'template-parts/industry', null, array( 'slug' => $pmc_key, 'ind' => pmc_industries()[ $pmc_key ] ) );
 } elseif ( 'growth360' === $pmc_type ) {

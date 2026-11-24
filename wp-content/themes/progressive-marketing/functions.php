@@ -7,11 +7,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PMC_VERSION', '3.0.0' );
+define( 'PMC_VERSION', '3.1.0' );
 define( 'PMC_DIR', get_template_directory() );
 define( 'PMC_URI', get_template_directory_uri() );
 
 require PMC_DIR . '/inc/content.php';
+require PMC_DIR . '/inc/industries.php';
 require PMC_DIR . '/inc/helpers.php';
 require PMC_DIR . '/inc/customizer.php';
 require PMC_DIR . '/inc/contact-form.php';
@@ -102,6 +103,10 @@ function pmc_legacy_redirects() {
 		'home-page' => '/',
 		'home'      => '/',
 		'driveby'   => '/services/driveby-review-guard/',
+		'industries/medical-clinics'    => '/industries/medical-wellness/',
+		'industries/auto-dealerships'   => '/industries/automotive/',
+		'industries/hotels'             => '/industries/hospitality/',
+		'industries/veterinary-clinics' => '/industries/veterinary-pet/',
 		'trial'     => '/contact-us/#trial',
 	);
 	if ( isset( $map[ $path ] ) ) {

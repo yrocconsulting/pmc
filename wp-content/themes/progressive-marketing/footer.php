@@ -31,9 +31,10 @@ defined( 'ABSPATH' ) || exit;
 		<div>
 			<h2 class="footer-title">Industries</h2>
 			<ul class="footer-links">
-				<?php foreach ( pmc_industries() as $slug => $ind ) : ?>
-					<li><a href="<?php echo esc_url( home_url( '/industries/' . $slug . '/' ) ); ?>"><?php echo esc_html( $ind['name'] ); ?></a></li>
+				<?php foreach ( pmc_featured_industries() as $slug => $ind ) : ?>
+					<li><a href="<?php echo esc_url( pmc_industry_url( $slug ) ); ?>"><?php echo esc_html( $ind['name'] ); ?></a></li>
 				<?php endforeach; ?>
+				<li><a href="<?php echo esc_url( home_url( '/industries/' ) ); ?>">All industries</a></li>
 			</ul>
 		</div>
 		<div>

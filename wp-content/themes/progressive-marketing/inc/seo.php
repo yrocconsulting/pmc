@@ -44,6 +44,10 @@ function pmc_page_context() {
 	if ( 'industries' === $pslug && isset( pmc_industries()[ $slug ] ) ) {
 		return array( 'industry', $slug );
 	}
+	$gparent = $parent ? wp_get_post_parent_id( $parent ) : 0;
+	if ( $gparent && 'industries' === get_post_field( 'post_name', $gparent ) && pmc_subindustry( $pslug, $slug ) ) {
+		return array( 'subindustry', $pslug . '/' . $slug );
+	}
 	if ( 'growth360' === $pslug && isset( pmc_growth360_editions()[ $slug ] ) ) {
 		return array( 'growth360', $slug );
 	}
@@ -66,12 +70,17 @@ function pmc_meta_description() {
 		$i = pmc_industries()[ $key ];
 		return $i['hero'] . ' ' . $i['lead'];
 	}
+	if ( 'subindustry' === $type ) {
+		list( $c, $sl ) = explode( '/', $key );
+		$si = pmc_subindustry( $c, $sl );
+		return sprintf( 'Google Maps visibility and review protection for %s. %s Rank for searches like “%s” with PMC Driveby.', strtolower( $si['name'] ), $si['line'], $si['searches'][0] );
+	}
 	if ( 'growth360' === $type ) {
 		return pmc_growth360_editions()[ $key ]['lead'];
 	}
 	$by_slug = array(
 		'services'     => 'Three services, one outcome: become the obvious choice in your market. PMC Driveby & Review Guard, Ripple, and high-end website builds.',
-		'industries'   => 'What the future looks like for medical clinics, auto dealerships, hotels, and veterinary clinics that work with Progressive Marketing Concepts.',
+		'industries'   => 'Industries we serve: medical and wellness, automotive, hospitality, veterinary and pet, home services, professional services, beauty, fitness, restaurants, and retail.',
 		'case-studies' => 'Real before-and-after Google Maps results: #8 to #1 for “chiropractor near me,” 97.53% share of local voice for an animal hospital, and more.',
 		'growth360'    => 'Growth360™ is an executive growth system for established clinics and dealerships, starting with a complimentary seven-day Executive Evaluation.',
 		'about-us'     => 'Progressive Marketing Concepts helps great local businesses get the attention they deserve, with total transparency and no sales pressure.',
@@ -245,7 +254,10 @@ function pmc_llms_txt( $wp ) {
 	$lines[] = '';
 	$lines[] = '## Industries';
 	foreach ( pmc_industries() as $slug => $i ) {
-		$lines[] = sprintf( '- [%s](%s): %s', $i['name'], home_url( '/industries/' . $slug . '/' ), $i['future'] );
+		$lines[] = sprintf( '- [%s](%s): %s', $i['name'], pmc_industry_url( $slug ), $i['future'] );
+		foreach ( $i['industries'] as $sl => $r ) {
+			$lines[] = sprintf( '  - [%s](%s): %s', $r[0], pmc_industry_url( $slug, $sl ), $r[3] );
+		}
 	}
 	$lines[] = '';
 	$lines[] = '## Growth360 programs';

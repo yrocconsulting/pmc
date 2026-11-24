@@ -32,12 +32,19 @@ $program = ! empty( $ind['program'] ) ? $ind['program'] : '';
 		<div class="search-card">
 			<p class="search-card-title"><?php echo pmc_icon( 'pin' ); // phpcs:ignore ?> Searches where <?php echo esc_html( $ind['customers'] ); ?> find you first</p>
 			<ul>
-				<?php foreach ( $ind['searches'] as $q ) : ?>
+				<?php foreach ( pmc_category_searches( $slug, 4 ) as $q ) : ?>
 					<li><span class="rank-pill">#1</span><?php echo esc_html( $q ); ?></li>
 				<?php endforeach; ?>
 			</ul>
 		</div>
 		<?php pmc_page_media( $slug, ob_get_clean() ); ?>
+	</div>
+</section>
+
+<section class="section section-paper">
+	<div class="container">
+		<?php pmc_heading( 'Who we work with', $ind['name'] . ' businesses *we serve.*', 'Choose your industry to see what your future looks like and where your customers will find you.' ); ?>
+		<?php get_template_part( 'template-parts/industry-list', null, array( 'cat' => $slug, 'ind' => $ind ) ); ?>
 	</div>
 </section>
 
@@ -56,7 +63,7 @@ $program = ! empty( $ind['program'] ) ? $ind['program'] : '';
 	</div>
 </section>
 
-<section class="section section-paper">
+<section class="section">
 	<div class="container">
 		<?php pmc_heading( 'Proof', $own ? 'Results for *' . strtolower( $ind['name'] ) . '.*' : 'Results from *our clients.*', 'Drag the slider to compare the map before and after.' ); ?>
 		<?php if ( $own ) : ?>
@@ -73,7 +80,7 @@ $program = ! empty( $ind['program'] ) ? $ind['program'] : '';
 	</div>
 </section>
 
-<section class="section">
+<section class="section section-paper">
 	<div class="container">
 		<?php pmc_heading( 'How we get you there', 'Three services. *One outcome.*' ); ?>
 		<?php get_template_part( 'template-parts/services-grid' ); ?>

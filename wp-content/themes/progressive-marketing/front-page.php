@@ -9,8 +9,8 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $marquee = array();
-foreach ( pmc_industries() as $ind ) {
-	$marquee = array_merge( $marquee, array_slice( $ind['searches'], 0, 3 ) );
+foreach ( pmc_featured_industries() as $pmc_ck => $ind ) {
+	$marquee = array_merge( $marquee, pmc_category_searches( $pmc_ck, 4 ) );
 }
 ?>
 

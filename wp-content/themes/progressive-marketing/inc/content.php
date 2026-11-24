@@ -137,7 +137,8 @@ function pmc_case_studies() {
 		'mansfield-chiropractor'     => array(
 			'title'     => 'Mansfield Chiropractor',
 			'location'  => 'Mansfield, TX',
-			'industry'  => 'medical-clinics',
+			'industry'  => 'medical-wellness',
+			'sub'       => 'chiropractors',
 			'label'     => 'Chiropractic & wellness',
 			'headline'  => 'Number one citywide for “chiropractor near me,” in about a month.',
 			'summary'   => 'A local clinic offering chiropractic care, medically supervised weight loss, IV nutrient therapy, electrical muscle stimulation, therapeutic ultrasound, and physical rehabilitation.',
@@ -151,7 +152,8 @@ function pmc_case_studies() {
 		'rockwall-wellness-center'   => array(
 			'title'     => 'Rockwall Wellness Center',
 			'location'  => 'Rockwall, TX',
-			'industry'  => 'medical-clinics',
+			'industry'  => 'medical-wellness',
+			'sub'       => 'iv-therapy',
 			'label'     => 'Wellness & IV therapy',
 			'headline'  => 'From 1.23% to 76.54% share of local voice.',
 			'summary'   => 'A wellness center offering TRT, PRP, IV therapies, bioidentical hormone replacement, and wellness programs.',
@@ -165,7 +167,8 @@ function pmc_case_studies() {
 		'gilbert-weight-loss-clinic' => array(
 			'title'     => 'Weight Loss & Hormone Therapy Clinic',
 			'location'  => 'Gilbert, AZ',
-			'industry'  => 'medical-clinics',
+			'industry'  => 'medical-wellness',
+			'sub'       => 'weight-loss-clinics',
 			'label'     => 'Weight loss & HRT',
 			'headline'  => 'Out of nowhere to visible across the entire service area.',
 			'summary'   => 'A clinic offering medically supervised weight loss, hormone replacement therapy, peptide therapy, IV therapy, and metabolic health.',
@@ -179,7 +182,8 @@ function pmc_case_studies() {
 		'grapevine-animal-clinic'    => array(
 			'title'     => 'Animal Clinic',
 			'location'  => 'Grapevine, TX',
-			'industry'  => 'veterinary-clinics',
+			'industry'  => 'veterinary-pet',
+			'sub'       => 'animal-hospitals',
 			'label'     => 'Veterinary',
 			'headline'  => 'The map’s clear first choice: 97.53% share of local voice.',
 			'summary'   => 'A full-service animal hospital offering wellness exams, emergency care, diagnostics, surgery, dental cleanings, and vaccinations.',
@@ -189,76 +193,6 @@ function pmc_case_studies() {
 				array( 'keyword' => 'Animal hospital near me', 'before' => 'Rank 8 · ARP 7.81 · 1.23% SOLV', 'after' => 'Rank 1 · ARP 1.69 · 97.53% SOLV', 'image' => 'grapevine-animal-hospital-near-me.webp' ),
 				array( 'keyword' => 'Animal hospital', 'before' => 'Rank 8 · ARP 6.48 · 2.47% SOLV', 'after' => 'Rank 1 · ARP 2.06 · 91.36% SOLV', 'image' => 'grapevine-animal-hospital.webp' ),
 			),
-		),
-	);
-}
-
-/**
- * Industries. Keys match page slugs under /industries/.
- */
-function pmc_industries() {
-	return array(
-		'medical-clinics'    => array(
-			'name'      => 'Medical Clinics',
-			'icon'      => 'medical',
-			'future'    => 'A schedule full of the patients you want to treat.',
-			'short'     => 'Chiropractic, med spa, weight loss, hormone therapy, primary care, dental.',
-			'hero'      => 'Picture a schedule that fills itself with the patients you want.',
-			'lead'      => 'Patients compare a few clinics on the map, read reviews, and call. In your future, yours is the clinic they see first, trust immediately, and book without a second thought.',
-			'customers' => 'patients',
-			'searches'  => array( 'chiropractor near me', 'med spa near me', 'weight loss clinic', 'hormone replacement therapy', 'IV therapy near me', 'urgent care' ),
-			'moments'   => array(
-				array( 'Every service line has demand', 'Weight loss, HRT, IV therapy: each one ranks on its own, so you grow the services that matter most.' ),
-				array( 'Your reputation does the selling', 'New patients arrive already confident, because every review they read points to you.' ),
-				array( 'You see growth coming', 'Monthly reporting shows visibility, reputation, and position against nearby clinics.' ),
-			),
-		),
-		'auto-dealerships'   => array(
-			'name'      => 'Auto Dealerships',
-			'icon'      => 'auto',
-			'future'    => 'Buyers decide on you before they reach the lot.',
-			'short'     => 'New and used sales, service departments, body shops.',
-			'hero'      => 'Become the obvious choice before the customer ever visits.',
-			'lead'      => 'Decisions happen before the showroom. Shoppers search, compare reviews, and form a preference long before they call. In your future, that preference is you.',
-			'customers' => 'buyers',
-			'searches'  => array( 'car dealership near me', 'used cars near me', 'truck dealer', 'auto service near me', 'oil change near me', 'car financing' ),
-			'moments'   => array(
-				array( 'Sales and service both win', 'Each department’s profile ranks for what it sells, so the lot and the service lane stay busy.' ),
-				array( 'Your reviews earn the visit', 'Review Guard catches reputation risks early, so shoppers see a dealership they can trust.' ),
-				array( 'Your whole market knows you', 'You rank across the towns and zip codes buyers drive in from, not just your street.' ),
-			),
-			'program'   => 'automotive',
-		),
-		'hotels'             => array(
-			'name'      => 'Hotels',
-			'icon'      => 'hotel',
-			'future'    => 'Direct bookings from travelers who found you first.',
-			'short'     => 'Independent, boutique, and franchised properties.',
-			'hero'      => 'Imagine travelers booking you directly, every night.',
-			'lead'      => 'Travelers open the map, search near where they need to be, and book one of the first properties they see. In your future, that’s you, booked directly instead of through a travel site.',
-			'customers' => 'guests',
-			'searches'  => array( 'hotels near me', 'hotel near [venue]', 'pet friendly hotel', 'extended stay hotel', 'hotel with pool', 'hotels near the airport' ),
-			'moments'   => array(
-				array( 'Direct bookings grow', 'Higher map visibility sends travelers to your own phone and booking page.' ),
-				array( 'You own the demand nearby', 'Rank around the airports, venues, and hospitals that bring travelers to town.' ),
-				array( 'Your rating stays an asset', 'Review Guard flags problems early, so your star rating keeps winning the click.' ),
-			),
-		),
-		'veterinary-clinics' => array(
-			'name'      => 'Veterinary Clinics',
-			'icon'      => 'vet',
-			'future'    => 'The clinic pet owners trust before they call.',
-			'short'     => 'General practice, animal hospitals, emergency and specialty.',
-			'hero'      => 'Your veterinary clinic. The local choice.',
-			'lead'      => 'Pet owners compare nearby clinics, the animals they treat, hours, and reviews before they call. In your future, they finish that search already sure it’s you.',
-			'customers' => 'pet owners',
-			'searches'  => array( 'vet near me', 'animal hospital near me', 'emergency vet', 'dog vaccinations', 'pet dental cleaning', 'exotic animal vet' ),
-			'moments'   => array(
-				array( 'First on the map', 'Our Grapevine client went from rank 8 to rank 1 for “animal hospital near me” in about a month.' ),
-				array( 'Confidence before the call', 'Pet owners see a clear, consistent picture of your clinic everywhere they look.' ),
-				array( 'Leadership sees the whole picture', 'Monthly executive reporting on visibility, reputation, and positioning.' ),
-			),
-			'program'   => 'veterinary',
 		),
 	);
 }
@@ -284,7 +218,7 @@ function pmc_growth360_editions() {
 			'closing'    => 'See what pet owners find when they look for your clinic.',
 			'video'      => 'https://assets.cdn.filesafe.space/0bvlnDHyDCoHlrLzW8oG/media/6aecc9b342ff25478cd79f59.mp4',
 			'eval_url'   => 'https://vet.progressivemarketing.pro/trial-form',
-			'industry'   => 'veterinary-clinics',
+			'industry'   => 'veterinary-pet',
 		),
 		'automotive' => array(
 			'name'       => 'Automotive',
@@ -301,7 +235,7 @@ function pmc_growth360_editions() {
 			'closing'    => 'See your dealership through the eyes of the market.',
 			'video'      => 'https://assets.cdn.filesafe.space/0bvlnDHyDCoHlrLzW8oG/media/6ae8b645c9d5b7168d96c643.mp4',
 			'eval_url'   => 'https://danm.progressivemarketing.pro/trial-form',
-			'industry'   => 'auto-dealerships',
+			'industry'   => 'automotive',
 		),
 	);
 }
@@ -366,10 +300,16 @@ function pmc_page_images() {
 		'driveby-review-guard' => array( 'page-driveby.jpg', 'Hand holding a phone with a Google search open' ),
 		'ripple'               => array( 'page-ripple.jpg', 'Two friends laughing while sharing something on a phone' ),
 		'website-builds'       => array( 'page-websites.jpg', 'Bright desk with a laptop and a desktop screen showing a website' ),
-		'medical-clinics'      => array( 'page-medical.jpg', 'Smiling doctor in a white coat in his clinic' ),
-		'auto-dealerships'     => array( 'page-auto.jpg', 'Bright car dealership showroom with new cars on display' ),
-		'hotels'               => array( 'page-hotels.jpg', 'Bright, modern hotel lobby with lounge seating' ),
-		'veterinary-clinics'   => array( 'page-vet.jpg', 'Veterinarian carefully examining a dachshund' ),
+		'medical-wellness'      => array( 'page-medical.jpg', 'Smiling doctor in a white coat in his clinic' ),
+		'automotive'            => array( 'page-auto.jpg', 'Bright car dealership showroom with new cars on display' ),
+		'hospitality'           => array( 'page-hotels.jpg', 'Bright, modern hotel lobby with lounge seating' ),
+		'veterinary-pet'        => array( 'page-vet.jpg', 'Veterinarian carefully examining a dachshund' ),
+		'home-services'         => array( 'page-home-services.jpg', 'Smiling plumber fixing the pipes under a sink' ),
+		'professional-services' => array( 'page-professional.jpg', 'Advisor meeting with clients at a table' ),
+		'beauty-personal-care'  => array( 'page-beauty.jpg', 'Hair stylist and client laughing in a salon' ),
+		'fitness-recreation'    => array( 'page-fitness.jpg', 'Bright Pilates studio with reformer machines' ),
+		'restaurants-food'      => array( 'page-restaurants.jpg', 'Sunny café with a long wooden counter' ),
+		'retail'                => array( 'page-retail.jpg', 'Smiling boutique owner among clothing racks' ),
 		'g360-veterinary'      => array( 'page-g360-vet.jpg', 'Veterinary team caring for a small dog' ),
 		'g360-automotive'      => array( 'page-g360-auto.jpg', 'A new car on display in a modern showroom' ),
 	);

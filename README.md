@@ -24,11 +24,17 @@ Activating the theme creates every page, the menus, a static front page, and `/%
 | `/` | Home: the future, proof, industries, services, FAQ |
 | `/services/` | Services hub |
 | `/services/driveby-review-guard/`, `/services/ripple/`, `/services/website-builds/` | The three services |
-| `/industries/` + `/industries/{medical-clinics, auto-dealerships, hotels, veterinary-clinics}/` | Industry futures |
+| `/industries/` | All industry categories |
+| `/industries/{category}/` | Category page listing its industries (10 categories) |
+| `/industries/{category}/{industry}/` | One page per industry (79 industries) |
 | `/growth360/` + `/growth360/{veterinary, automotive}/` | Growth360 editions (from vet. and danm. landing pages) |
 | `/case-studies/` | Results with drag-to-compare before/after map grids |
 | `/about-us/`, `/contact-us/` | About, contact |
 | `/llms.txt` | Plain-language summary of the business for AI assistants |
+
+## Industries
+
+All categories and industries live in `inc/industries.php`. To add an industry, add one line to its category's `industries` list (name, business noun, four real searches, a one-line future). The next deploy creates the page automatically. `featured` categories show on the home page and in the menu.
 
 ## Editing content
 

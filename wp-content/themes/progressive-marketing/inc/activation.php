@@ -60,6 +60,16 @@ function pmc_activate() {
 	}
 	foreach ( pmc_industries() as $slug => $ind ) {
 		$pages[ $slug ] = pmc_ensure_page( $ind['name'], $slug, $pages['industries'] );
+		foreach ( $ind['industries'] as $sl => $r ) {
+			pmc_ensure_page( $r[0], $sl, $pages[ $slug ] );
+		}
+	}
+	// Retire the pages from the earlier four-industry structure (moved to trash, recoverable).
+	foreach ( array( 'medical-clinics', 'auto-dealerships', 'hotels', 'veterinary-clinics' ) as $old ) {
+		$legacy = get_page_by_path( 'industries/' . $old );
+		if ( $legacy ) {
+			wp_trash_post( $legacy->ID );
+		}
 	}
 	foreach ( pmc_growth360_editions() as $slug => $ed ) {
 		$pages[ 'g360-' . $slug ] = pmc_ensure_page( 'Growth360 for ' . $ed['name'], $slug, $pages['growth360'] );
@@ -85,9 +95,10 @@ function pmc_activate() {
 				$add( $svc['name'], $pages[ $slug ], $parent );
 			}
 			$parent = $add( 'Industries', $pages['industries'] );
-			foreach ( pmc_industries() as $slug => $ind ) {
+			foreach ( pmc_featured_industries() as $slug => $ind ) {
 				$add( $ind['name'], $pages[ $slug ], $parent );
 			}
+			$add( 'All industries', $pages['industries'], $parent );
 			$add( 'Results', $pages['case-studies'] );
 			$add( 'About', $pages['about-us'] );
 			$add( 'Contact', $pages['contact-us'] );
@@ -104,6 +115,7 @@ function pmc_activate() {
 		}
 	}
 	set_theme_mod( 'nav_menu_locations', $locations );
+	pmc_sync_industries_menu( $pages );
 
 	if ( 'Just another WordPress site' === get_option( 'blogdescription' ) || '' === get_option( 'blogdescription' ) ) {
 		update_option( 'blogdescription', 'Become the obvious choice in your market' );
@@ -123,3 +135,42 @@ function pmc_maybe_upgrade() {
 	}
 }
 add_action( 'admin_init', 'pmc_maybe_upgrade' );
+
+/**
+ * Keep the Industries dropdown in the primary menu in step with the
+ * featured categories (rebuilt only when the list changes).
+ *
+ * @param array $pages Page IDs by key.
+ */
+function pmc_sync_industries_menu( $pages ) {
+	$locations = get_theme_mod( 'nav_menu_locations', array() );
+	if ( empty( $locations['primary'] ) ) {
+		return;
+	}
+	$menu_id = (int) $locations['primary'];
+	$wanted  = array_keys( pmc_featured_industries() );
+	$sig     = md5( implode( ',', $wanted ) . '|all' );
+	if ( get_option( 'pmc_industry_menu_sig' ) === $sig ) {
+		return;
+	}
+	$items  = wp_get_nav_menu_items( $menu_id, array( 'post_status' => 'any' ) );
+	$parent = 0;
+	foreach ( (array) $items as $item ) {
+		if ( ! $item->menu_item_parent && (int) $item->object_id === (int) $pages['industries'] ) {
+			$parent = (int) $item->ID;
+		}
+	}
+	if ( ! $parent ) {
+		return;
+	}
+	foreach ( (array) $items as $item ) {
+		if ( (int) $item->menu_item_parent === $parent ) {
+			wp_delete_post( $item->ID, true );
+		}
+	}
+	foreach ( pmc_featured_industries() as $slug => $ind ) {
+		wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => $ind['name'], 'menu-item-object' => 'page', 'menu-item-object-id' => $pages[ $slug ], 'menu-item-type' => 'post_type', 'menu-item-parent-id' => $parent, 'menu-item-status' => 'publish' ) );
+	}
+	wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => 'All industries', 'menu-item-object' => 'page', 'menu-item-object-id' => $pages['industries'], 'menu-item-type' => 'post_type', 'menu-item-parent-id' => $parent, 'menu-item-status' => 'publish' ) );
+	update_option( 'pmc_industry_menu_sig', $sig );
+}

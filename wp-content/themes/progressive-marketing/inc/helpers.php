@@ -73,6 +73,12 @@ function pmc_icon( $name ) {
 		'star'    => '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
 		'calendar' => '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h3v3H8z"/>',
 		'ai'      => '<path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>',
+		'home'     => '<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5.5h4V20"/>',
+		'briefcase' => '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12.5h18"/>',
+		'sparkle'  => '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/>',
+		'dumbbell' => '<path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/>',
+		'utensils' => '<path d="M7 3v8a2 2 0 0 0 2 2v8M11 3v8a2 2 0 0 1-2 2M7 3v5M11 3v5M9 3v5"/><path d="M17 21V3c-2 1.5-3 4-3 7v3h3"/>',
+		'bag'      => '<path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
 		'play'    => '<circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/>',
 	);
 	if ( ! isset( $paths[ $name ] ) ) {
@@ -129,15 +135,16 @@ function pmc_rank_grid( $size = 7 ) {
 }
 
 /**
- * Case studies for one industry.
+ * Case studies for a category, or for one industry inside it.
  *
- * @param string $industry Industry key.
+ * @param string $industry Category slug.
+ * @param string $sub      Optional industry slug.
  */
-function pmc_case_studies_for( $industry ) {
+function pmc_case_studies_for( $industry, $sub = '' ) {
 	return array_filter(
 		pmc_case_studies(),
-		function ( $cs ) use ( $industry ) {
-			return $cs['industry'] === $industry;
+		function ( $cs ) use ( $industry, $sub ) {
+			return $cs['industry'] === $industry && ( '' === $sub || ( isset( $cs['sub'] ) && $cs['sub'] === $sub ) );
 		}
 	);
 }
