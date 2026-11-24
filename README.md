@@ -93,7 +93,7 @@ Copy the site with SiteGround's migrator or a plugin like Duplicator/All-in-One 
 
 ## Image credits
 
-- Home hero photo (`assets/img/hero-owner.jpg`): Vitaly Gariev on Unsplash, https://unsplash.com/photos/XqMo4OlBnh0, free under the Unsplash License. Replace it any time in Appearance → Customize → Progressive Marketing → Home hero image.
+- Home hero photo (`assets/img/hero-vet.jpg`): Alexander Mass on Unsplash, https://unsplash.com/photos/e4f87NzUJsU, free under the Unsplash License. Replace it any time in Appearance → Customize → Progressive Marketing → Home hero image.
 - Case-study map grids: PMC client reports.
 
 ## Local check

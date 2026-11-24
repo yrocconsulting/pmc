@@ -32,7 +32,7 @@ foreach ( pmc_industries() as $ind ) {
 			</div>
 			<div class="hero-chip chip-rank" aria-hidden="true">
 				<span class="chip-icon"><?php echo pmc_icon( 'pin' ); // phpcs:ignore ?></span>
-				<span><strong>#1 on Google Maps</strong><small>“clinic near me”</small></span>
+				<span><strong>#1 on Google Maps</strong><small>“animal hospital near me”</small></span>
 			</div>
 			<div class="hero-chip chip-review" aria-hidden="true">
 				<span class="chip-stars"><?php echo str_repeat( pmc_icon( 'star' ), 5 ); // phpcs:ignore ?></span>

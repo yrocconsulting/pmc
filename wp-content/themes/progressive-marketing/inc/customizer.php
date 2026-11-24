@@ -22,7 +22,7 @@ function pmc_defaults() {
 		'auto_eval_url'  => '',
 		'topbar_text'    => '',
 		'hero_image'     => '',
-		'hero_image_alt' => 'Smiling clinic owner in a white coat, arms crossed, in his practice',
+		'hero_image_alt' => 'Veterinarian in a white coat caring for a dachshund in a bright clinic',
 		'notify_email'   => '',
 		'webhook_url'    => '',
 		'thankyou_text'  => 'Thanks! Your PMC Driveby trial request is in. We’ll check your Google Business Profile and get back to you within one business day.',
@@ -126,5 +126,5 @@ add_action( 'customize_register', 'pmc_customize_hero_image', 20 );
  */
 function pmc_hero_image() {
 	$url = pmc_opt( 'hero_image' );
-	return $url ? $url : pmc_img( 'hero-owner.jpg' );
+	return $url ? $url : pmc_img( 'hero-vet.jpg' );
 }
