@@ -107,3 +107,32 @@ function pmc_js_flag() {
 	echo "<script>document.documentElement.className+=' js';</script>\n";
 }
 add_action( 'wp_head', 'pmc_js_flag', 0 );
+
+/**
+ * Favicon and app icons. Skipped when a Site Icon is set in
+ * Appearance → Customize → Site Identity, which takes priority.
+ */
+function pmc_favicons() {
+	if ( has_site_icon() ) {
+		return;
+	}
+	$base = PMC_URI . '/assets/img/';
+	printf( '<link rel="icon" href="%s" sizes="any">' . "\n", esc_url( $base . 'favicon.ico' ) );
+	printf( '<link rel="icon" href="%s" type="image/svg+xml">' . "\n", esc_url( $base . 'favicon.svg' ) );
+	printf( '<link rel="icon" href="%s" sizes="192x192" type="image/png">' . "\n", esc_url( $base . 'icon-192.png' ) );
+	printf( '<link rel="apple-touch-icon" href="%s">' . "\n", esc_url( $base . 'apple-touch-icon.png' ) );
+}
+add_action( 'wp_head', 'pmc_favicons', 2 );
+add_action( 'admin_head', 'pmc_favicons', 2 );
+add_action( 'login_head', 'pmc_favicons', 2 );
+
+/**
+ * Serve the theme favicon at /favicon.ico instead of WordPress's default.
+ */
+function pmc_favicon_ico() {
+	if ( ! has_site_icon() ) {
+		wp_safe_redirect( PMC_URI . '/assets/img/favicon.ico', 301 );
+		exit;
+	}
+}
+add_action( 'do_faviconico', 'pmc_favicon_ico', 5 );

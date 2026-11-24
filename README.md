@@ -91,6 +91,10 @@ Delete the local `pmc_deploy` files once the secret is saved, or keep them somew
 
 Copy the site with SiteGround's migrator or a plugin like Duplicator/All-in-One WP Migration, or install WordPress on cPanel, activate the theme, and run **Deploy theme to cPanel (production)** with the `CPANEL_FTP_*` secrets (see the workflow file). Then update the Customizer settings and point DNS.
 
+## Favicon
+
+`assets/img/favicon.svg` (master), `favicon.ico` (16/32/48), `apple-touch-icon.png` (180), `icon-192.png`, `icon-512.png`. The theme outputs them automatically and serves `/favicon.ico`. Setting a Site Icon in Appearance → Customize → Site Identity overrides them (upload `icon-512.png` there if you want WordPress to manage it).
+
 ## Image credits
 
 - Home hero photo (`assets/img/hero-vet.jpg`): Alexander Mass on Unsplash, https://unsplash.com/photos/e4f87NzUJsU, free under the Unsplash License. Replace it any time in Appearance → Customize → Progressive Marketing → Home hero image.
