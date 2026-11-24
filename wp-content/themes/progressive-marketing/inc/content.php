@@ -28,10 +28,10 @@ function pmc_services() {
 			'tagline'  => 'Found first. Trusted on sight.',
 			'icon'     => 'pin',
 			'future'   => 'Your business sits at the top of Google Maps across your whole market, and the reviews customers read there make the decision easy, because the fake and abusive ones don’t stay up.',
-			'summary'  => 'PMC Driveby™ moves your Google Business Profile into the top three on the map for the searches that bring in customers. PMC Review Guard™ watches every new review around the clock and reports damaging 1- and 2-star reviews for removal, usually within 30 minutes.',
+			'summary'  => 'PMC Driveby™ moves your Google Business Profile into the top three on the map for the searches that bring in customers. PMC Review Guard™, included with every Driveby plan, watches every new review around the clock and reports damaging 1- and 2-star reviews for removal, usually within 30 minutes.',
 			'parts'    => array(
 				array( 'PMC Driveby™', 'Location-based ranking that expands where you show up in the top three, keyword by keyword, across your whole service area, with continuous monitoring to keep you there.' ),
-				array( 'PMC Review Guard™', 'Around-the-clock monitoring of your Google reviews. New 1- and 2-star reviews that look fake, spammy, abusive, off-topic, or from competitors and non-customers are reported, escalated, and tracked until Google decides. No login to your Google account required.' ),
+				array( 'PMC Review Guard™, included', 'Included with every Driveby plan at no extra cost. Around-the-clock monitoring of your Google reviews. New 1- and 2-star reviews that look fake, spammy, abusive, off-topic, or from competitors and non-customers are reported, escalated, and tracked until Google decides. No login to your Google account required.' ),
 				array( 'Executive reporting', 'Monthly trends, reputation health, competitive positioning, and recommendations. What changed, why, and what to do next.' ),
 			),
 			'steps'    => array(
@@ -312,9 +312,9 @@ function pmc_growth360_editions() {
  */
 function pmc_faqs() {
 	return array(
-		array( 'What does Progressive Marketing Concepts do?', 'We help established local businesses become the obvious choice in their market. Our three services are PMC Driveby™ & Review Guard™ (top-three Google Maps visibility and fast removal reporting for fake or abusive reviews), Ripple (sharing campaigns that turn your existing media into earned media), and custom websites built for AI search.' ),
+		array( 'What does Progressive Marketing Concepts do?', 'We help established local businesses become the obvious choice in their market. Our three services are PMC Driveby™ & Review Guard™ (top-three Google Maps visibility, with fast removal reporting for fake or abusive reviews included), Ripple (sharing campaigns that turn your existing media into earned media), and custom websites built for AI search.' ),
 		array( 'What is PMC Driveby?', 'PMC Driveby is a location-based ranking system for Google Business Profiles. It moves your business into the top three on Google Maps for the keywords your customers search, across your whole service area, and keeps monitoring it there.' ),
-		array( 'What is PMC Review Guard?', 'Review Guard monitors your Google reviews around the clock. New 1- and 2-star reviews that appear fake, spammy, abusive, off-topic, or from competitors or non-customers are typically reported within 30 minutes, then escalated and tracked. No login to your Google account is required.' ),
+		array( 'What is PMC Review Guard?', 'Review Guard is included with every PMC Driveby plan. It monitors your Google reviews around the clock. New 1- and 2-star reviews that appear fake, spammy, abusive, off-topic, or from competitors or non-customers are typically reported within 30 minutes, then escalated and tracked. No login to your Google account is required.' ),
 		array( 'Can every negative review be removed?', 'No. Google makes the final decision, and genuine reviews that follow its policies stay up. Review Guard makes sure the ones that break the rules are reported fast and followed through.' ),
 		array( 'What is Ripple?', 'Ripple turns the ads, emails, and social posts you already run into a sharing campaign. Customers get a reward you choose for entering and for sharing, their friends join and share in turn, and every step is tracked back to its source. It’s a media campaign, not a referral scheme: no recruiting and no commissions.' ),
 		array( 'How fast will I see results?', 'Our Driveby optimization runs 30 to 45 days, and many clients see movement sooner. One wellness center moved from position 13 to 5 for a key service in seven days.' ),
@@ -344,7 +344,7 @@ function pmc_testimonials() {
 function pmc_process() {
 	return array(
 		array( 'See where you stand', 'A free evaluation or 7-day Driveby trial maps where you rank today, keyword by keyword, across your market.' ),
-		array( 'Claim the map', 'Driveby lifts your Google Business Profile into the top three across your service area, while Review Guard protects your rating.' ),
+		array( 'Claim the map', 'Driveby lifts your Google Business Profile into the top three across your service area, while Review Guard, included with Driveby, protects your rating.' ),
 		array( 'Spread the momentum', 'Ripple turns your customers into your media, and a custom website turns all that attention into booked customers.' ),
 		array( 'Watch it compound', 'Monthly executive reporting shows what changed and where to focus next. Most clients see major movement in 30–45 days.' ),
 	);

@@ -116,7 +116,7 @@ $biz      = $ed['business'];
 				<h3>The Growth360™ system</h3>
 				<ol>
 					<li><strong>PMC Driveby™.</strong> Continuous improvement and monitoring of local visibility.</li>
-					<li><strong>PMC Review Guard™.</strong> Ongoing reputation monitoring and review-risk identification.</li>
+					<li><strong>PMC Review Guard™.</strong> Included with Driveby: around-the-clock review monitoring, with fake or abusive reviews reported for removal.</li>
 					<li><strong>Executive reporting.</strong> Monthly trends, reputation health, positioning, and recommendations.</li>
 				</ol>
 			</div>
