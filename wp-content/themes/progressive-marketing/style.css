@@ -57,8 +57,8 @@ Text Domain: pmc
 	--shadow: 0 1px 2px rgba(11, 35, 65, .04), 0 14px 34px rgba(11, 35, 65, .08);
 	--shadow-lg: 0 2px 4px rgba(11, 35, 65, .04), 0 30px 70px rgba(11, 35, 65, .14);
 
-	--serif: "Fraunces", "Iowan Old Style", Georgia, serif;
-	--sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	--serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+	--sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 	--container: 1180px;
 	--gutter: clamp(16px, 4vw, 40px);
 	--ease: cubic-bezier(.2, .7, .2, 1);
@@ -74,7 +74,7 @@ img, svg, video { max-width: 100%; height: auto; display: block; }
 a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--blue-dark); }
 h1, h2, h3, h4 { color: var(--ink); line-height: 1.1; margin: 0 0 .5em; }
-h1, h2 { font-family: var(--serif); font-weight: 500; letter-spacing: -.012em; font-variation-settings: "opsz" 120; }
+h1, h2 { font-family: var(--serif); font-weight: 500; letter-spacing: -.015em; }
 h1 { font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1.02; }
 h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
 h3 { font-family: var(--sans); font-size: 1.2rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; }

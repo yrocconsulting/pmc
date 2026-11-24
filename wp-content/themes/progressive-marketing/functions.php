@@ -43,7 +43,7 @@ add_action( 'after_setup_theme', 'pmc_setup' );
  * Styles and scripts.
  */
 function pmc_assets() {
-	wp_enqueue_style( 'pmc-fonts', 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Fraunces:opsz,wght@9..144,400..600&display=swap', array(), null );
+	wp_enqueue_style( 'pmc-fonts', 'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..600&family=Plus+Jakarta+Sans:wght@400..700&display=swap', array(), null );
 	wp_enqueue_style( 'pmc-style', get_stylesheet_uri(), array( 'pmc-fonts' ), PMC_VERSION );
 	wp_enqueue_script( 'pmc-main', PMC_URI . '/assets/js/main.js', array(), PMC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
 }
