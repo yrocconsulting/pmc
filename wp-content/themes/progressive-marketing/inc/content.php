@@ -27,55 +27,75 @@ function pmc_services() {
 			'name'     => 'Driveby & Review Guard',
 			'tagline'  => 'Found first. Trusted on sight.',
 			'icon'     => 'pin',
-			'future'   => 'Your business sits at the top of Google Maps across your whole market, and every review customers read makes the decision easier.',
-			'summary'  => 'PMC Driveby™ moves your Google Business Profile into the top three on the map for the searches that bring in customers. PMC Review Guard™ watches your reputation continuously and flags review risks before they cost you business.',
+			'future'   => 'Your business sits at the top of Google Maps across your whole market, and the reviews customers read there make the decision easy, because the fake and abusive ones don’t stay up.',
+			'summary'  => 'PMC Driveby™ moves your Google Business Profile into the top three on the map for the searches that bring in customers. PMC Review Guard™ watches every new review around the clock and reports damaging 1- and 2-star reviews for removal, usually within 30 minutes.',
 			'parts'    => array(
-				array( 'PMC Driveby™', 'Location-based ranking that expands where you show up in the top three, keyword by keyword, across your service area. Continuous monitoring keeps you there.' ),
-				array( 'PMC Review Guard™', 'Ongoing reputation monitoring and review-risk identification, so you see problems early and your star rating keeps working for you.' ),
+				array( 'PMC Driveby™', 'Location-based ranking that expands where you show up in the top three, keyword by keyword, across your whole service area, with continuous monitoring to keep you there.' ),
+				array( 'PMC Review Guard™', 'Around-the-clock monitoring of your Google reviews. New 1- and 2-star reviews that look fake, spammy, abusive, off-topic, or from competitors and non-customers are reported, escalated, and tracked until Google decides. No login to your Google account required.' ),
 				array( 'Executive reporting', 'Monthly trends, reputation health, competitive positioning, and recommendations. What changed, why, and what to do next.' ),
+			),
+			'steps'    => array(
+				array( 'Watch', 'Every new review on your Google Business Profile is monitored, day and night.' ),
+				array( 'Report', 'Damaging 1- and 2-star reviews are typically reported within 30 minutes of appearing.' ),
+				array( 'Escalate', 'Reviews move through ongoing reporting and escalation, not a single attempt.' ),
+				array( 'Track', 'You see each review’s status until it’s resolved.' ),
 			),
 			'outcomes' => array(
 				'Customers searching “near me” see you first, from every part of town.',
-				'Your reviews read like a recommendation, not a risk.',
-				'You know exactly where you rank, and so does your team.',
+				'A fake review or a competitor’s attack stops being an emergency.',
+				'Your star rating reflects the business you actually run.',
 			),
 			'draft'    => false,
 		),
 		'ripple'               => array(
 			'name'     => 'Ripple',
-			'tagline'  => 'One win, felt everywhere.',
+			'tagline'  => 'Your customers become your media.',
 			'icon'     => 'ripple',
-			'future'   => 'Every happy customer, every review, every mention travels further, and your name shows up wherever your next customer is looking.',
-			'summary'  => 'Ripple extends the momentum you build on the map into the rest of your market. [Draft: replace with the Ripple service details.]',
+			'future'   => 'Every ad, email, and post you already pay for starts a chain reaction: customers enter, share with friends, and those friends share again, so your name travels further than your budget.',
+			'summary'  => 'Ripple turns the media you already run into earned media. You choose a reward for entering and a reward for sharing; we build the branded campaign and landing page; your ads, email list, and social followers feed it. Every person who enters can bring in more, and every step of the chain is tracked.',
 			'parts'    => array(
-				array( 'Reach', '[Draft] What Ripple does first.' ),
-				array( 'Amplify', '[Draft] How Ripple multiplies results.' ),
-				array( 'Measure', '[Draft] How Ripple is reported.' ),
+				array( 'You pick the incentive', 'What a customer gets for entering, and what they get for sharing. That’s the whole brief.' ),
+				array( 'We build the campaign', 'A branded campaign and landing page, built for you. Nothing for your team to set up or integrate.' ),
+				array( 'Your media fuels it', 'Point the ads, email list, and social following you already have at the campaign, and let the sharing take it further.' ),
+				array( 'Every step is measured', 'Which ads seeded it, how far it spread, the value of the earned media, your top amplifiers, and the channels and platforms that worked best.' ),
+			),
+			'steps'    => array(
+				array( 'Seed', 'Your existing ads, emails, and posts bring in the first wave.' ),
+				array( 'Share', 'Each person who enters is rewarded for sharing with people they know.' ),
+				array( 'Spread', 'Their friends enter and share too, generation after generation.' ),
+				array( 'Measure', 'Every person is traced back to the share that brought them.' ),
 			),
 			'outcomes' => array(
-				'Your best moments keep working long after they happen.',
-				'People hear about you before they ever search for you.',
-				'Momentum compounds instead of resetting every month.',
+				'More customers from the advertising you already pay for.',
+				'People hear about you from someone they trust, before they ever search.',
+				'Lower cost to win each new customer, campaign after campaign.',
 			),
-			'draft'    => true,
+			'draft'    => false,
 		),
 		'website-builds'       => array(
 			'name'     => 'Website Builds',
 			'tagline'  => 'A website that closes.',
 			'icon'     => 'browser',
-			'future'   => 'Visitors land on a site that answers their questions, earns their trust, and turns them into booked appointments, and AI assistants can read it and recommend you.',
-			'summary'  => 'Fast, high-end websites designed to convert the attention Driveby and Ripple create, and built so search engines and AI assistants understand exactly what you do. [Draft: add build process, timeline, and what’s included.]',
+			'future'   => 'Visitors land on a site that feels unmistakably yours, answers their questions, earns their trust, and turns them into booked appointments, and AI assistants can read it and recommend you.',
+			'summary'  => 'Every website we build is custom: designed from scratch around your brand, your market, and the customers you want more of. No templates, no two alike. Each one is built to convert the attention Driveby and Ripple create, and structured so search engines and AI assistants understand exactly what you do.',
 			'parts'    => array(
-				array( 'Built to convert', 'Clear offers, proof, and one obvious next step on every page.' ),
+				array( 'Custom from the first sketch', 'Designed around your brand and your customers, never a recycled theme.' ),
+				array( 'Built to convert', 'Clear offers, real proof, and one obvious next step on every page.' ),
 				array( 'Built for AI search', 'Structured data, clean semantic pages, and answers written the way people ask questions, so ChatGPT, Gemini, and Google’s AI Overviews can cite you.' ),
 				array( 'Built to last', 'Fast, secure, mobile-first, and easy for your team to update.' ),
+			),
+			'steps'    => array(
+				array( 'Discover', 'We learn your business, your market, and who you want more of.' ),
+				array( 'Design', 'A custom design shaped around your brand, reviewed with you.' ),
+				array( 'Build', 'Fast, accessible, and structured for search engines and AI.' ),
+				array( 'Launch', 'Go live, connect it to your visibility and reputation work, and keep improving.' ),
 			),
 			'outcomes' => array(
 				'Your website becomes your best salesperson, working every hour of the day.',
 				'AI assistants describe your business accurately and send customers your way.',
 				'Every dollar you spend on visibility lands somewhere that converts.',
 			),
-			'draft'    => true,
+			'draft'    => false,
 		),
 	);
 }
@@ -101,8 +121,8 @@ function pmc_future_day() {
 		array( '9:15 AM', 'star', 'New 5-star review', '“Found them on the map, booked in two minutes.”' ),
 		array( '11:03 AM', 'calendar', 'Appointment booked online', 'From your website, after reading your FAQ.' ),
 		array( '1:30 PM', 'ai', 'Recommended by an AI assistant', '“Top choice nearby, known for fast service and great reviews.”' ),
-		array( '3:48 PM', 'shield', 'Review Guard alert resolved', 'A risky review flagged and handled before it spread.' ),
-		array( '5:20 PM', 'chart', 'Weekly ranking report', 'Top 3 across your service area.' ),
+		array( '3:48 PM', 'shield', 'Fake review reported', 'A competitor’s 1-star review flagged for removal within 30 minutes.' ),
+		array( '5:20 PM', 'chart', 'Your campaign is spreading', 'Customers shared your offer, and their friends are sharing it too.' ),
 	);
 }
 
@@ -292,9 +312,11 @@ function pmc_growth360_editions() {
  */
 function pmc_faqs() {
 	return array(
-		array( 'What does Progressive Marketing Concepts do?', 'We help established local businesses become the obvious choice in their market. Our three services are PMC Driveby™ & Review Guard™ (Google Maps visibility and reputation protection), Ripple, and high-end website builds designed for AI search.' ),
+		array( 'What does Progressive Marketing Concepts do?', 'We help established local businesses become the obvious choice in their market. Our three services are PMC Driveby™ & Review Guard™ (top-three Google Maps visibility and fast removal reporting for fake or abusive reviews), Ripple (sharing campaigns that turn your existing media into earned media), and custom websites built for AI search.' ),
 		array( 'What is PMC Driveby?', 'PMC Driveby is a location-based ranking system for Google Business Profiles. It moves your business into the top three on Google Maps for the keywords your customers search, across your whole service area, and keeps monitoring it there.' ),
-		array( 'What is PMC Review Guard?', 'Review Guard is ongoing reputation monitoring with review-risk identification. It flags reviews and patterns that could hurt your rating so you can respond early.' ),
+		array( 'What is PMC Review Guard?', 'Review Guard monitors your Google reviews around the clock. New 1- and 2-star reviews that appear fake, spammy, abusive, off-topic, or from competitors or non-customers are typically reported within 30 minutes, then escalated and tracked. No login to your Google account is required.' ),
+		array( 'Can every negative review be removed?', 'No. Google makes the final decision, and genuine reviews that follow its policies stay up. Review Guard makes sure the ones that break the rules are reported fast and followed through.' ),
+		array( 'What is Ripple?', 'Ripple turns the ads, emails, and social posts you already run into a sharing campaign. Customers get a reward you choose for entering and for sharing, their friends join and share in turn, and every step is tracked back to its source. It’s a media campaign, not a referral scheme: no recruiting and no commissions.' ),
 		array( 'How fast will I see results?', 'Our Driveby optimization runs 30 to 45 days, and many clients see movement sooner. One wellness center moved from position 13 to 5 for a key service in seven days.' ),
 		array( 'How do I know it’s working?', 'Every keyword gets a before-and-after geo-grid report showing your average ranking position (ARP) and share of local voice (SOLV, the share of the map where you rank in the top three), plus monthly executive reporting.' ),
 		array( 'Is there a way to try it first?', 'Yes. You can start a free 7-day PMC Driveby trial, or a complimentary Growth360™ Executive Evaluation for veterinary clinics and dealerships. There’s no sales presentation.' ),
@@ -323,7 +345,7 @@ function pmc_process() {
 	return array(
 		array( 'See where you stand', 'A free evaluation or 7-day Driveby trial maps where you rank today, keyword by keyword, across your market.' ),
 		array( 'Claim the map', 'Driveby lifts your Google Business Profile into the top three across your service area, while Review Guard protects your rating.' ),
-		array( 'Spread the momentum', 'Ripple and a high-end website turn that visibility into reach, trust, and booked customers.' ),
+		array( 'Spread the momentum', 'Ripple turns your customers into your media, and a custom website turns all that attention into booked customers.' ),
 		array( 'Watch it compound', 'Monthly executive reporting shows what changed and where to focus next. Most clients see major movement in 30–45 days.' ),
 	);
 }

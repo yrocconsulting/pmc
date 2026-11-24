@@ -100,6 +100,22 @@
 		}
 	}
 
+	/* Ripple illustration: play when visible, replay on click */
+	$$('[data-ripple]').forEach(function (fig) {
+		function play() {
+			fig.classList.remove('is-live');
+			void fig.getBoundingClientRect();
+			fig.classList.add('is-live');
+		}
+		var btn = $('[data-ripple-replay]', fig);
+		if (btn) { btn.addEventListener('click', play); }
+		if (reduce || !('IntersectionObserver' in window)) { play(); return; }
+		var rio = new IntersectionObserver(function (entries) {
+			if (entries[0].isIntersecting) { play(); rio.disconnect(); }
+		}, { threshold: 0.4 });
+		rio.observe(fig);
+	});
+
 	/* Count-up stats */
 	var counters = $$('[data-count]');
 	if (counters.length && 'IntersectionObserver' in window && !reduce) {

@@ -37,6 +37,26 @@ $svc  = $args['svc'];
 	</div>
 </section>
 
+<section class="section section-dark">
+	<div class="container<?php echo 'ripple' === $slug ? ' split split-center' : ''; ?>">
+		<div>
+			<?php pmc_heading( 'How it works', 'Four steps, *start to finish.*' ); ?>
+			<ol class="process process-dark<?php echo 'ripple' === $slug ? ' process-stack' : ''; ?>">
+				<?php foreach ( $svc['steps'] as $i => $st ) : ?>
+					<li class="process-step" style="--r:<?php echo (int) $i; ?>">
+						<span class="process-num"><?php echo esc_html( str_pad( $i + 1, 2, '0', STR_PAD_LEFT ) ); ?></span>
+						<h3><?php echo esc_html( $st[0] ); ?></h3>
+						<p><?php echo esc_html( $st[1] ); ?></p>
+					</li>
+				<?php endforeach; ?>
+			</ol>
+		</div>
+		<?php if ( 'ripple' === $slug ) : ?>
+			<?php get_template_part( 'template-parts/ripple-viz' ); ?>
+		<?php endif; ?>
+	</div>
+</section>
+
 <?php if ( 'website-builds' === $slug ) : ?>
 <section class="section section-paper">
 	<div class="container split">

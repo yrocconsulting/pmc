@@ -34,7 +34,7 @@ Activating the theme creates every page, the menus, a static front page, and `/%
 
 All copy lives in `wp-content/themes/progressive-marketing/inc/content.php`: services, industries, Growth360 editions, case studies, FAQs, testimonials.
 
-**Draft copy:** Ripple and Website Builds are marked `'draft' => true`. Logged-in editors see a yellow "Draft copy" badge and `[Draft …]` notes; visitors don't. Replace the text and set `'draft' => false`.
+**Draft copy:** set `'draft' => true` on any service to show logged-in editors a yellow "Draft copy" badge while copy is unfinished. Visitors never see it.
 
 Phone, email, trial button link, HighLevel form ID, and Growth360 evaluation links: **Appearance → Customize → Progressive Marketing**.
 
