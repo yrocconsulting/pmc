@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#07111f">
+<meta name="theme-color" content="#fbf8f3">
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) || exit;
 
 <header class="site-header" data-header>
 	<div class="container header-inner">
-		<?php pmc_logo( 'brand-invert' ); ?>
+		<?php pmc_logo(); ?>
 		<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
 			<span class="nav-toggle-bars" aria-hidden="true"></span>
 			<span class="screen-reader-text">Menu</span>

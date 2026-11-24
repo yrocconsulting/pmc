@@ -8,8 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
-<section class="page-hero hero-dark">
-	<div class="hero-grain" aria-hidden="true"></div>
+<section class="page-hero">
 	<div class="container page-hero-inner" data-reveal>
 		<p class="eyebrow">About Progressive Marketing Concepts</p>
 		<h1>Great businesses deserve <em>to be found.</em></h1>
@@ -25,7 +24,7 @@ get_header();
 		</div>
 	</div>
 </section>
-<section class="section section-dark">
+<section class="section section-tint">
 	<div class="container">
 		<?php pmc_heading( 'Our promise', 'Clarity *without pressure.*' ); ?>
 		<ul class="promise-list" data-reveal>

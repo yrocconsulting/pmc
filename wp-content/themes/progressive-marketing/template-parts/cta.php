@@ -20,7 +20,7 @@ $title = preg_replace( '/\*(.+?)\*/', '<em>$1</em>', esc_html( $title ) );
 		<p><?php echo esc_html( $text ); ?></p>
 		<div class="cta-actions">
 			<a class="btn btn-primary btn-lg" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?> <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
-			<a class="btn btn-outline-light btn-lg" href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>">Talk to us</a>
+			<a class="btn btn-ghost btn-lg" href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>">Talk to us</a>
 		</div>
 		<?php if ( pmc_opt( 'phone' ) ) : ?>
 			<p class="cta-phone">Prefer to talk? <?php echo wp_kses_post( pmc_phone_link() ); ?></p>

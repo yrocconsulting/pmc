@@ -14,8 +14,7 @@ $eval_url = $override ? $override : $ed['eval_url'];
 $cases    = pmc_case_studies_for( $ed['industry'] );
 $biz      = $ed['business'];
 ?>
-<section class="page-hero hero-dark">
-	<div class="hero-grain" aria-hidden="true"></div>
+<section class="page-hero">
 	<div class="container hero-split">
 		<div data-reveal>
 			<p class="eyebrow">Growth360™ for <?php echo esc_html( $ed['name'] ); ?></p>
@@ -135,7 +134,7 @@ $biz      = $ed['business'];
 </section>
 <?php endif; ?>
 
-<section class="section section-dark">
+<section class="section section-tint">
 	<div class="container">
 		<?php pmc_heading( 'Our promise', 'Clarity *without pressure.*' ); ?>
 		<ul class="promise-list" data-reveal>

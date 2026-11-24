@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 	<div class="container footer-grid">
 		<div class="footer-brand">
-			<?php pmc_logo( 'brand-invert' ); ?>
+			<?php pmc_logo(); ?>
 			<p>Progressive Marketing Concepts helps established local businesses get found first, trusted on sight, and chosen.</p>
 		</div>
 		<div>

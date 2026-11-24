@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PMC_VERSION', '2.0.0' );
+define( 'PMC_VERSION', '3.0.0' );
 define( 'PMC_DIR', get_template_directory() );
 define( 'PMC_URI', get_template_directory_uri() );
 
@@ -43,7 +43,7 @@ add_action( 'after_setup_theme', 'pmc_setup' );
  * Styles and scripts.
  */
 function pmc_assets() {
-	wp_enqueue_style( 'pmc-fonts', 'https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap', array(), null );
+	wp_enqueue_style( 'pmc-fonts', 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&display=swap', array(), null );
 	wp_enqueue_style( 'pmc-style', get_stylesheet_uri(), array( 'pmc-fonts' ), PMC_VERSION );
 	wp_enqueue_script( 'pmc-main', PMC_URI . '/assets/js/main.js', array(), PMC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
 }

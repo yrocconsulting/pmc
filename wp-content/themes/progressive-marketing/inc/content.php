@@ -122,7 +122,7 @@ function pmc_future_day() {
 		array( '11:03 AM', 'calendar', 'Appointment booked online', 'From your website, after reading your FAQ.' ),
 		array( '1:30 PM', 'ai', 'Recommended by an AI assistant', '“Top choice nearby, known for fast service and great reviews.”' ),
 		array( '3:48 PM', 'shield', 'Fake review reported', 'A competitor’s 1-star review flagged for removal within 30 minutes.' ),
-		array( '5:20 PM', 'chart', 'Your campaign is spreading', 'Customers shared your offer, and their friends are sharing it too.' ),
+		array( '5:20 PM', 'ripple', 'Your campaign is spreading', 'Customers shared your offer, and their friends are sharing it too.' ),
 	);
 }
 

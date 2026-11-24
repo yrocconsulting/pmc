@@ -13,8 +13,7 @@ $own     = pmc_case_studies_for( $slug );
 $cases   = $own ? $own : pmc_case_studies();
 $program = ! empty( $ind['program'] ) ? $ind['program'] : '';
 ?>
-<section class="page-hero hero-dark">
-	<div class="hero-grain" aria-hidden="true"></div>
+<section class="page-hero">
 	<div class="container hero-split">
 		<div data-reveal>
 			<p class="eyebrow"><span class="eyebrow-icon"><?php echo pmc_icon( $ind['icon'] ); // phpcs:ignore ?></span> <?php echo esc_html( $ind['name'] ); ?></p>
@@ -26,7 +25,7 @@ $program = ! empty( $ind['program'] ) ? $ind['program'] : '';
 				<?php else : ?>
 					<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">See your future <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
 				<?php endif; ?>
-				<a class="btn btn-outline-light btn-lg" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">See results</a>
+				<a class="btn btn-ghost btn-lg" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">See results</a>
 			</div>
 		</div>
 		<div class="search-card" data-reveal>

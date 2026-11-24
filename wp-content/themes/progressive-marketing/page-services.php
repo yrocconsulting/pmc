@@ -8,8 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
-<section class="page-hero hero-dark">
-	<div class="hero-grain" aria-hidden="true"></div>
+<section class="page-hero">
 	<div class="container page-hero-inner" data-reveal>
 		<p class="eyebrow">Services</p>
 		<h1>Three ways in. <em>One future.</em></h1>

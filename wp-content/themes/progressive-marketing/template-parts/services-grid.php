@@ -10,7 +10,7 @@ $i = 0;
 ?>
 <div class="svc-grid">
 	<?php foreach ( pmc_services() as $slug => $s ) : ?>
-		<a class="svc-card" href="<?php echo esc_url( home_url( '/services/' . $slug . '/' ) ); ?>" data-reveal style="--r:<?php echo (int) $i++; ?>">
+		<a class="svc-card tint-<?php echo esc_attr( array( 'sky', 'peach', 'mint' )[ $i % 3 ] ); ?>" href="<?php echo esc_url( home_url( '/services/' . $slug . '/' ) ); ?>" data-reveal style="--r:<?php echo (int) $i++; ?>">
 			<span class="svc-num">0<?php echo (int) $i; ?></span>
 			<span class="svc-icon"><?php echo pmc_icon( $s['icon'] ); // phpcs:ignore ?></span>
 			<h3><?php echo esc_html( $s['name'] ); ?> <?php echo pmc_draft_badge( $s ); // phpcs:ignore ?></h3>

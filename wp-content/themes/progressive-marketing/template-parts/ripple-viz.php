@@ -96,6 +96,6 @@ defined( 'ABSPATH' ) || exit;
 		<span><i class="k g2"></i>Their friends</span>
 		<span><i class="k g3"></i>Their friends’ friends</span>
 	</figcaption>
-	<button type="button" class="btn btn-outline-light" data-ripple-replay>Start the ripple again</button>
+	<button type="button" class="btn btn-ghost" data-ripple-replay>Start the ripple again</button>
 	<p class="fine-print">Illustration of how sharing spreads. Real campaigns vary.</p>
 </figure>

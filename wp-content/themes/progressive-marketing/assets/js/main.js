@@ -116,6 +116,77 @@
 		rio.observe(fig);
 	});
 
+	/* Hero switch: today vs. 90 days from now */
+	$$('[data-future-toggle]').forEach(function (ft) {
+		var buttons = $$('[data-ft]', ft);
+		var auto = null;
+		function set(future) {
+			ft.classList.toggle('is-future', future);
+			buttons.forEach(function (b) {
+				b.setAttribute('aria-pressed', (b.getAttribute('data-ft') === 'future') === future ? 'true' : 'false');
+			});
+		}
+		buttons.forEach(function (b) {
+			b.addEventListener('click', function () {
+				window.clearInterval(auto);
+				set(b.getAttribute('data-ft') === 'future');
+			});
+		});
+		if (reduce || !('IntersectionObserver' in window)) { return; }
+		var fio = new IntersectionObserver(function (entries) {
+			if (!entries[0].isIntersecting) { return; }
+			fio.disconnect();
+			window.setTimeout(function () { set(true); }, 1200);
+			auto = window.setInterval(function () { set(!ft.classList.contains('is-future')); }, 5200);
+		}, { threshold: 0.35 });
+		fio.observe(ft);
+	});
+
+	/* Day timeline: arrows, drag to scroll, progress bar */
+	$$('[data-day]').forEach(function (day) {
+		var track = $('[data-day-track]', day);
+		var bar = $('[data-day-progress]', day);
+		if (!track) { return; }
+		function step(dir) {
+			var card = track.querySelector('.day-card');
+			var w = card ? card.getBoundingClientRect().width + 16 : 300;
+			track.scrollBy({ left: dir * w, behavior: reduce ? 'auto' : 'smooth' });
+		}
+		var prev = $('[data-day-prev]', day);
+		var next = $('[data-day-next]', day);
+		if (prev) { prev.addEventListener('click', function () { step(-1); }); }
+		if (next) { next.addEventListener('click', function () { step(1); }); }
+		function progress() {
+			var max = track.scrollWidth - track.clientWidth;
+			var p = max > 0 ? track.scrollLeft / max : 1;
+			if (bar) { bar.style.width = (20 + p * 80).toFixed(1) + '%'; }
+		}
+		track.addEventListener('scroll', progress, { passive: true });
+		progress();
+		var down = false, startX = 0, startLeft = 0, moved = false;
+		track.addEventListener('pointerdown', function (e) {
+			if (e.pointerType !== 'mouse') { return; }
+			down = true; moved = false; startX = e.clientX; startLeft = track.scrollLeft;
+			track.classList.add('is-dragging');
+		});
+		window.addEventListener('pointermove', function (e) {
+			if (!down) { return; }
+			var dx = e.clientX - startX;
+			if (Math.abs(dx) > 3) { moved = true; }
+			track.scrollLeft = startLeft - dx;
+		});
+		window.addEventListener('pointerup', function () {
+			if (!down) { return; }
+			down = false;
+			track.classList.remove('is-dragging');
+		});
+		track.addEventListener('click', function (e) { if (moved) { e.preventDefault(); } }, true);
+		track.addEventListener('keydown', function (e) {
+			if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+			if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+		});
+	});
+
 	/* Count-up stats */
 	var counters = $$('[data-count]');
 	if (counters.length && 'IntersectionObserver' in window && !reduce) {

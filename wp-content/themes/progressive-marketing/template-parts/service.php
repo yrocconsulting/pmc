@@ -10,15 +10,14 @@ defined( 'ABSPATH' ) || exit;
 $slug = $args['slug'];
 $svc  = $args['svc'];
 ?>
-<section class="page-hero hero-dark">
-	<div class="hero-grain" aria-hidden="true"></div>
+<section class="page-hero">
 	<div class="container page-hero-inner" data-reveal>
 		<p class="eyebrow"><span class="eyebrow-icon"><?php echo pmc_icon( $svc['icon'] ); // phpcs:ignore ?></span> <?php echo esc_html( $svc['name'] ); ?> <?php echo pmc_draft_badge( $svc ); // phpcs:ignore ?></p>
 		<h1><?php echo esc_html( $svc['tagline'] ); ?></h1>
 		<p class="lead"><?php echo esc_html( $svc['future'] ); ?></p>
 		<div class="hero-actions">
 			<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">See your future <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
-			<a class="btn btn-outline-light btn-lg" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">See results</a>
+			<a class="btn btn-ghost btn-lg" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">See results</a>
 		</div>
 	</div>
 </section>
@@ -37,7 +36,7 @@ $svc  = $args['svc'];
 	</div>
 </section>
 
-<section class="section section-dark">
+<section class="section section-tint">
 	<div class="container<?php echo 'ripple' === $slug ? ' split split-center' : ''; ?>">
 		<div>
 			<?php pmc_heading( 'How it works', 'Four steps, *start to finish.*' ); ?>

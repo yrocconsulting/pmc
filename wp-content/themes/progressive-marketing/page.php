@@ -20,7 +20,7 @@ if ( 'service' === $pmc_type ) {
 	while ( have_posts() ) :
 		the_post();
 		?>
-		<section class="page-hero hero-dark page-hero-sm">
+		<section class="page-hero page-hero-sm">
 			<div class="container"><h1><?php the_title(); ?></h1></div>
 		</section>
 		<section class="section section-tight">
