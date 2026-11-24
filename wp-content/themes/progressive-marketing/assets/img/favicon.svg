@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#0b2341"/>
-  <path d="M11.5 45V19.5h9.5a7.25 7.25 0 0 1 0 14.5h-9.5" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linejoin="round"/>
-  <path d="M27.5 45l7-25.5" fill="none" stroke="#6dccfa" stroke-width="5.5" stroke-linecap="round"/>
-  <path d="M55.5 24.2a11.5 11.5 0 1 0 0 15.6" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round"/>
+  <!-- P -->
+  <path d="M7.5 46V20h12.5a7.5 7.5 0 0 1 0 15H7.5" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round"/>
+  <!-- M: bar inside the P, diagonal to the peak; its last stroke is the C -->
+  <path d="M16.5 25.5V46" fill="none" stroke="#6dccfa" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M29.5 41.5L42 20" fill="none" stroke="#6dccfa" stroke-width="5" stroke-linecap="round"/>
+  <!-- C -->
+  <path d="M56.4 24.2A11.5 11.5 0 1 0 56.4 41.8" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
 </svg>
