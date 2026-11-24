@@ -219,3 +219,35 @@ function pmc_heading( $eyebrow, $title, $lead = '', $class = '' ) {
 	}
 	echo '</header>';
 }
+
+/**
+ * Hero photo for the current page. Uses the page's Featured Image if set,
+ * otherwise the bundled photo for $key.
+ *
+ * @param string $key     Key in pmc_page_images().
+ * @param string $overlay Optional HTML to float over the photo (already escaped).
+ */
+function pmc_page_media( $key, $overlay = '' ) {
+	$images = pmc_page_images();
+	$id     = is_singular() ? get_queried_object_id() : 0;
+	$src    = '';
+	$alt    = '';
+	if ( $id && has_post_thumbnail( $id ) ) {
+		$thumb = get_post_thumbnail_id( $id );
+		$src   = wp_get_attachment_image_url( $thumb, 'large' );
+		$alt   = get_post_meta( $thumb, '_wp_attachment_image_alt', true );
+	} elseif ( isset( $images[ $key ] ) ) {
+		$src = pmc_img( $images[ $key ][0] );
+		$alt = $images[ $key ][1];
+	}
+	if ( ! $src ) {
+		return;
+	}
+	printf(
+		'<figure class="page-media%s" data-reveal><div class="page-media-frame"><img src="%s" width="1000" height="1000" alt="%s" fetchpriority="high"></div>%s</figure>',
+		$overlay ? ' has-overlay' : '',
+		esc_url( $src ),
+		esc_attr( $alt ),
+		$overlay // phpcs:ignore -- built from escaped template output.
+	);
+}

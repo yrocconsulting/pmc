@@ -9,10 +9,13 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 <section class="page-hero">
-	<div class="container page-hero-inner" data-reveal>
-		<p class="eyebrow">About Progressive Marketing Concepts</p>
-		<h1>Great businesses deserve <em>to be found.</em></h1>
-		<p class="lead">We help established local businesses get the attention they’ve earned: found first, trusted on sight, and chosen by the customers they want most.</p>
+	<div class="container page-hero-split">
+		<div class="page-hero-copy" data-reveal>
+			<p class="eyebrow">About Progressive Marketing Concepts</p>
+			<h1>Great businesses deserve <em>to be found.</em></h1>
+			<p class="lead">We help established local businesses get the attention they’ve earned: found first, trusted on sight, and chosen by the customers they want most.</p>
+		</div>
+		<?php pmc_page_media( 'about-us' ); ?>
 	</div>
 </section>
 <section class="section">

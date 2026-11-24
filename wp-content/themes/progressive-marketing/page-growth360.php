@@ -9,10 +9,13 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 <section class="page-hero">
-	<div class="container page-hero-inner" data-reveal>
-		<p class="eyebrow">Growth360™</p>
-		<h1>An executive growth system, <em>built for your industry.</em></h1>
-		<p class="lead">Growth360™ brings local visibility, reputation, and executive reporting into one program. It starts with a complimentary seven-day Executive Evaluation: no consultation, no Zoom, no sales presentation.</p>
+	<div class="container page-hero-split">
+		<div class="page-hero-copy" data-reveal>
+			<p class="eyebrow">Growth360™</p>
+			<h1>An executive growth system, <em>built for your industry.</em></h1>
+			<p class="lead">Growth360™ brings local visibility, reputation, and executive reporting into one program. It starts with a complimentary seven-day Executive Evaluation: no consultation, no Zoom, no sales presentation.</p>
+		</div>
+		<?php pmc_page_media( 'growth360' ); ?>
 	</div>
 </section>
 <section class="section">

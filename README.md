@@ -94,6 +94,8 @@ Copy the site with SiteGround's migrator or a plugin like Duplicator/All-in-One 
 ## Image credits
 
 - Home hero photo (`assets/img/hero-vet.jpg`): Alexander Mass on Unsplash, https://unsplash.com/photos/e4f87NzUJsU, free under the Unsplash License. Replace it any time in Appearance → Customize → Progressive Marketing → Home hero image.
+- Interior page photos (`assets/img/page-*.jpg`): free Unsplash License photos, all from images.unsplash.com (not Unsplash+). Photographers: Vadym Kudriavtsev and Myron Mott (showrooms), Frames For Your Heart (hotel lobby), Solen Feyissa (phone), Vitaly Gariev (friends on phone, handshake, phone call, doctor), Domenico Loia (desk), chansu shin and shawn kim (storefronts), Amari Shutters (handshake), Daniel Thomas (laptop), Alexander Mass (veterinary). The mapping of photo to page is in `pmc_page_images()` in `inc/content.php`.
+- Override any page's photo by setting a Featured Image on that page in WordPress.
 - Case-study map grids: PMC client reports.
 
 ## Local check

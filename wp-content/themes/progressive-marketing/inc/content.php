@@ -349,3 +349,28 @@ function pmc_process() {
 		array( 'Watch it compound', 'Monthly executive reporting shows what changed and where to focus next. Most clients see major movement in 30–45 days.' ),
 	);
 }
+
+/**
+ * Hero photo for each page: key => [file in assets/img, alt text].
+ * A page's Featured Image (set in the WordPress editor) overrides these.
+ * Photos are from Unsplash (free Unsplash License); see README for credits.
+ */
+function pmc_page_images() {
+	return array(
+		'services'             => array( 'page-services.jpg', 'A neighborhood shop with striped awnings and window displays' ),
+		'industries'           => array( 'page-industries.jpg', 'A storefront with large windows on a quiet street' ),
+		'case-studies'         => array( 'page-results.jpg', 'Business owner reviewing results on a laptop' ),
+		'growth360'            => array( 'page-g360.jpg', 'Two business owners shaking hands across a table' ),
+		'about-us'             => array( 'page-about.jpg', 'Two professionals shaking hands in a bright office' ),
+		'contact-us'           => array( 'page-contact.jpg', 'Smiling business owner on a phone call at his desk' ),
+		'driveby-review-guard' => array( 'page-driveby.jpg', 'Hand holding a phone with a Google search open' ),
+		'ripple'               => array( 'page-ripple.jpg', 'Two friends laughing while sharing something on a phone' ),
+		'website-builds'       => array( 'page-websites.jpg', 'Bright desk with a laptop and a desktop screen showing a website' ),
+		'medical-clinics'      => array( 'page-medical.jpg', 'Smiling doctor in a white coat in his clinic' ),
+		'auto-dealerships'     => array( 'page-auto.jpg', 'Bright car dealership showroom with new cars on display' ),
+		'hotels'               => array( 'page-hotels.jpg', 'Bright, modern hotel lobby with lounge seating' ),
+		'veterinary-clinics'   => array( 'page-vet.jpg', 'Veterinarian carefully examining a dachshund' ),
+		'g360-veterinary'      => array( 'page-g360-vet.jpg', 'Veterinary team caring for a small dog' ),
+		'g360-automotive'      => array( 'page-g360-auto.jpg', 'A new car on display in a modern showroom' ),
+	);
+}

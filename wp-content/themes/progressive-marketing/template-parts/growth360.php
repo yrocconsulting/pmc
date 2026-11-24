@@ -25,7 +25,8 @@ $biz      = $ed['business'];
 			</div>
 			<p class="hero-note"><?php echo pmc_icon( 'check' ); // phpcs:ignore ?> No consultation required <?php echo pmc_icon( 'check' ); // phpcs:ignore ?> No Zoom <?php echo pmc_icon( 'check' ); // phpcs:ignore ?> No sales presentation</p>
 		</div>
-		<div class="brief-card" data-reveal>
+		<?php ob_start(); ?>
+		<div class="brief-card">
 			<div class="brief-top"><span>Confidential</span><span><?php echo esc_html( $ed['edition'] ); ?></span></div>
 			<p class="brief-title">Executive Brief™</p>
 			<ol class="brief-list">
@@ -35,6 +36,7 @@ $biz      = $ed['business'];
 			</ol>
 			<p class="brief-caption">A focused assessment of visibility, reputation, competitive positioning, and growth readiness.</p>
 		</div>
+		<?php pmc_page_media( 'g360-' . $slug, ob_get_clean() ); ?>
 	</div>
 </section>
 

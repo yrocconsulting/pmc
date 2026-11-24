@@ -28,7 +28,8 @@ $program = ! empty( $ind['program'] ) ? $ind['program'] : '';
 				<a class="btn btn-ghost btn-lg" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">See results</a>
 			</div>
 		</div>
-		<div class="search-card" data-reveal>
+		<?php ob_start(); ?>
+		<div class="search-card">
 			<p class="search-card-title"><?php echo pmc_icon( 'pin' ); // phpcs:ignore ?> Searches where <?php echo esc_html( $ind['customers'] ); ?> find you first</p>
 			<ul>
 				<?php foreach ( $ind['searches'] as $q ) : ?>
@@ -36,6 +37,7 @@ $program = ! empty( $ind['program'] ) ? $ind['program'] : '';
 				<?php endforeach; ?>
 			</ul>
 		</div>
+		<?php pmc_page_media( $slug, ob_get_clean() ); ?>
 	</div>
 </section>
 

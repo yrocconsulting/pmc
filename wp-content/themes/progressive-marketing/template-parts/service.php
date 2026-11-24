@@ -11,14 +11,17 @@ $slug = $args['slug'];
 $svc  = $args['svc'];
 ?>
 <section class="page-hero">
-	<div class="container page-hero-inner" data-reveal>
-		<p class="eyebrow"><span class="eyebrow-icon"><?php echo pmc_icon( $svc['icon'] ); // phpcs:ignore ?></span> <?php echo esc_html( $svc['name'] ); ?> <?php echo pmc_draft_badge( $svc ); // phpcs:ignore ?></p>
-		<h1><?php echo esc_html( $svc['tagline'] ); ?></h1>
-		<p class="lead"><?php echo esc_html( $svc['future'] ); ?></p>
-		<div class="hero-actions">
-			<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">See your future <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
-			<a class="btn btn-ghost btn-lg" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">See results</a>
+	<div class="container page-hero-split">
+		<div class="page-hero-copy" data-reveal>
+			<p class="eyebrow"><span class="eyebrow-icon"><?php echo pmc_icon( $svc['icon'] ); // phpcs:ignore ?></span> <?php echo esc_html( $svc['name'] ); ?> <?php echo pmc_draft_badge( $svc ); // phpcs:ignore ?></p>
+			<h1><?php echo esc_html( $svc['tagline'] ); ?></h1>
+			<p class="lead"><?php echo esc_html( $svc['future'] ); ?></p>
+			<div class="hero-actions">
+				<a class="btn btn-primary btn-lg" href="<?php echo esc_url( pmc_trial_url() ); ?>">See your future <?php echo pmc_icon( 'arrow' ); // phpcs:ignore ?></a>
+				<a class="btn btn-ghost btn-lg" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>">See results</a>
+			</div>
 		</div>
+		<?php pmc_page_media( $slug ); ?>
 	</div>
 </section>
 

@@ -10,10 +10,13 @@ get_header();
 $cases = pmc_case_studies();
 ?>
 <section class="page-hero">
-	<div class="container page-hero-inner" data-reveal>
-		<p class="eyebrow">Results</p>
-		<h1>Their future <em>already happened.</em></h1>
-		<p class="lead">Real before-and-after reports from businesses that partnered with PMC Driveby. Every dot is a point in their market. Red means invisible. Green means top three.</p>
+	<div class="container page-hero-split">
+		<div class="page-hero-copy" data-reveal>
+			<p class="eyebrow">Results</p>
+			<h1>Their future <em>already happened.</em></h1>
+			<p class="lead">Real before-and-after reports from businesses that partnered with PMC Driveby. Every dot is a point in their market. Red means invisible. Green means top three.</p>
+		</div>
+		<?php pmc_page_media( 'case-studies' ); ?>
 	</div>
 	<nav class="container case-jump" aria-label="Case studies" data-reveal>
 		<?php foreach ( $cases as $slug => $cs ) : ?>

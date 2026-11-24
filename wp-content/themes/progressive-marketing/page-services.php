@@ -9,10 +9,13 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 <section class="page-hero">
-	<div class="container page-hero-inner" data-reveal>
-		<p class="eyebrow">Services</p>
-		<h1>Three ways in. <em>One future.</em></h1>
-		<p class="lead">Found first, trusted on sight, chosen again and again. Every service we offer exists to get you there, and they work best together.</p>
+	<div class="container page-hero-split">
+		<div class="page-hero-copy" data-reveal>
+			<p class="eyebrow">Services</p>
+			<h1>Three ways in. <em>One future.</em></h1>
+			<p class="lead">Found first, trusted on sight, chosen again and again. Every service we offer exists to get you there, and they work best together.</p>
+		</div>
+		<?php pmc_page_media( 'services' ); ?>
 	</div>
 </section>
 <section class="section">
