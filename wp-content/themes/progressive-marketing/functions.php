@@ -40,12 +40,23 @@ function pmc_setup() {
 add_action( 'after_setup_theme', 'pmc_setup' );
 
 /**
+ * Cache-busting version for a theme file: a short hash of its contents, so
+ * browsers and SiteGround's cache fetch the new file after every deploy.
+ *
+ * @param string $file Path relative to the theme folder.
+ */
+function pmc_asset_version( $file ) {
+	$path = PMC_DIR . '/' . $file;
+	return is_readable( $path ) ? substr( md5_file( $path ), 0, 10 ) : PMC_VERSION;
+}
+
+/**
  * Styles and scripts.
  */
 function pmc_assets() {
 	wp_enqueue_style( 'pmc-fonts', 'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..600&family=Plus+Jakarta+Sans:wght@400..700&display=swap', array(), null );
-	wp_enqueue_style( 'pmc-style', get_stylesheet_uri(), array( 'pmc-fonts' ), PMC_VERSION );
-	wp_enqueue_script( 'pmc-main', PMC_URI . '/assets/js/main.js', array(), PMC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	wp_enqueue_style( 'pmc-style', get_stylesheet_uri(), array( 'pmc-fonts' ), pmc_asset_version( 'style.css' ) );
+	wp_enqueue_script( 'pmc-main', PMC_URI . '/assets/js/main.js', array(), pmc_asset_version( 'assets/js/main.js' ), array( 'strategy' => 'defer', 'in_footer' => true ) );
 }
 add_action( 'wp_enqueue_scripts', 'pmc_assets' );
 
